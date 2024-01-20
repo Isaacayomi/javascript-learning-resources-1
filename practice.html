@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <input type="text" class="inputEl">
+<p class="displayPass"></p>
+    <script>
+let element = document.querySelector('input');
+let display = document.querySelector('.displayPass')
+
+element.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+        display.innerHTML = element.value;
+        console.log(element.value)
+        element.value = " ";
+
+    }
+})
+    </script>
+</body>
+
+</html>
