@@ -5,6 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <style>
+        .tick {
+            text-decoration: line-through;
+        }
+    </style>
 </head>
 
 <body>
@@ -37,9 +43,7 @@ element.addEventListener('keydown', function(e) {
         const addTask = document.querySelector('.addTask');
         const display = document.querySelector('.displayTask');
 
-        const todoList = addTask.addEventListener('click', function() {
-// e.preventDefault()
-
+        const addTodo = function () {
             const taskList = taskElement.value;
             const html = `
             <p class="displayTask">
@@ -48,7 +52,20 @@ element.addEventListener('keydown', function(e) {
             `
             display.insertAdjacentHTML('afterbegin', html);
             taskElement.value = " ";
-        })
+            /*
+                        for (let i = 0; i < html.length; i++) {
+                            console.log(html[i])
+            
+                            if (!html[i].classList.includes('.tick')) {
+                                html[i].classList.add('.tick')
+                            } else {
+                                html[i].classList.remove('.tick')
+                            }
+                        } */
+        }
+
+        addTask.addEventListener('click', addTodo);
+
 
 
     </script>

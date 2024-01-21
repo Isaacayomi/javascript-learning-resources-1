@@ -72,7 +72,7 @@ const displayMovements = function (movements) {
     const html = `
   <div class="movements__row">
           <div class="movements__type movements__type--${type}">${i + 1} ${type}</div>
-          <div class="movements__value">${mov}</div>
+          <div class="movements__value">${Math.abs(mov)}</div>
         </div>
   `;
 
@@ -94,3 +94,29 @@ const currencies = new Map([
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
+
+////////////// CODING CHALLENGE 1
+//TEST DATA: Julia's data [9,16,6,8,3], Kate's data [10, 5, 6, 1, 4]
+
+const checkDogs = function(dogsJulia, dogsKate) {
+const juliaShallowCopy = [...dogsJulia] //Creating a shallow copy of the original array
+const juliaCopy = juliaShallowCopy.slice(0,-2);
+const removeFirst = juliaCopy.splice(0,1); //Removes the first element in the shallowcopy created and this changes the array
+
+const correctedData = [juliaCopy, dogsKate];
+
+juliaCopy.forEach(function(dogAge, i) {
+  const age = dogAge >= 3? "an adult" : "a puppy";
+
+  console.log(`Dog number ${i + 1} is ${age} and it is ${dogAge} years old`);
+});
+
+console.log(`-----KATE'S DOG`)
+dogsKate.forEach(function(dogAge, i) {
+  const age = dogAge >= 3? "an adult" : "a puppy";
+
+  console.log(`Dog number ${i + 1} is ${age} and it is ${dogAge} years old`);
+})
+}
+
+checkDogs([9,16,6,8,3], [10, 5, 6, 1, 4])
