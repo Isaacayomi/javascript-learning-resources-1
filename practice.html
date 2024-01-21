@@ -9,7 +9,7 @@
 
 <body>
 
-    <input type="text" class="inputEl">
+    <!-- <input type="text" class="inputEl">
 <p class="displayPass"></p>
     <script>
 let element = document.querySelector('input');
@@ -23,7 +23,37 @@ element.addEventListener('keydown', function(e) {
 
     }
 })
+    </script> -->
+
+    <!-- A simple todo application -->
+    <input type="text" name="Tasks" class="TasksEl">
+    <button class="addTask">ADD</button>
+    <p class="displayTask">
+        <!-- <input type="checkbox" class="inputTag"> -->
+    </p>
+
+    <script>
+        const taskElement = document.querySelector('.TasksEl');
+        const addTask = document.querySelector('.addTask');
+        const display = document.querySelector('.displayTask');
+
+        const todoList = addTask.addEventListener('click', function() {
+// e.preventDefault()
+
+            const taskList = taskElement.value;
+            const html = `
+            <p class="displayTask">
+        <input type="checkbox"> ${taskList}
+    </p>
+            `
+            display.insertAdjacentHTML('afterbegin', html);
+            taskElement.value = " ";
+        })
+
+
     </script>
+
+
 </body>
 
 </html>

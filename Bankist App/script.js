@@ -63,6 +63,7 @@ const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
 const displayMovements = function (movements) {
+  containerMovements.innerHTML = " "; //Empty the movement container
   movements.forEach(function (mov, i) { //Remember, forEach loop actually accepts three arguements which are the current element of the array, the index and the entire array
 
     const type = mov > 0? "deposit": "withdrawal"
@@ -78,7 +79,7 @@ const displayMovements = function (movements) {
   containerMovements.insertAdjacentHTML('afterbegin', html)   
   })
 }
-displayMovements(account1.movements)
+displayMovements(account2.movements)
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
