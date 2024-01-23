@@ -66,7 +66,7 @@ const displayMovements = function (movements) {
   containerMovements.innerHTML = " "; //Empty the movement container
   movements.forEach(function (mov, i) { //Remember, forEach loop actually accepts three arguements which are the current element of the array, the index and the entire array
 
-    const type = mov > 0? "deposit": "withdrawal"
+    const type = mov > 0 ? "deposit" : "withdrawal"
 
 
     const html = `
@@ -76,7 +76,7 @@ const displayMovements = function (movements) {
         </div>
   `;
 
-  containerMovements.insertAdjacentHTML('afterbegin', html)   
+    containerMovements.insertAdjacentHTML('afterbegin', html)
   })
 }
 displayMovements(account2.movements)
@@ -90,14 +90,13 @@ const currencies = new Map([
   ['EUR', 'Euro'],
   ['GBP', 'Pound sterling'],
 ]);
-
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
-
+ 
 /////////////////////////////////////////////////
 
 ////////////// CODING CHALLENGE 1
 //TEST DATA: Julia's data [9,16,6,8,3], Kate's data [10, 5, 6, 1, 4]
 
+/*
 const checkDogs = function(dogsJulia, dogsKate) {
 const juliaShallowCopy = [...dogsJulia] //Creating a shallow copy of the original array
 const juliaCopy = juliaShallowCopy.slice(0,-2);
@@ -111,13 +110,31 @@ correctedData.forEach(function(dogAge, i) {
   
   console.log(`Dog number ${i + 1} is ${age} and it is ${dogAge} years old`);
 })
-
-console.log(`-----KATE'S DOG`)
-// dogsKate.forEach(function(dogAge, i) {
-//   const age = dogAge >= 3? "an adult" : "a puppy";
-
-//   console.log(`Dog number ${i + 1} is ${age} and it is ${dogAge} years old`);
-// })
 }
 
-checkDogs([9,16,6,8,3], [10, 5, 6, 1, 4])
+checkDogs([9,16,6,8,3], [10, 5, 6, 1, 4]) */
+
+//THE MAP METHOD
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300]; 
+const eurToUsd = 1.1;
+/*
+const movementsUSD = movements.map(function(mov){
+  return mov * eurToUsd;
+})
+console.log(`${movementsUSD}`);
+console.log(movements); */
+
+const movementsUSD = movements.map(mov => mov * eurToUsd
+)
+console.log(movementsUSD);
+console.log(movements);
+
+// const movementsUSD = movements.map(mov => mov * eurToUsd);
+// console.log(movements)
+// console.log(movementsUSD)
+
+
+
+
+
+ 
