@@ -79,7 +79,18 @@ const displayMovements = function (movements) {
     containerMovements.insertAdjacentHTML('afterbegin', html)
   })
 }
-displayMovements(account2.movements)
+displayMovements(account2.movements);
+
+const createUsernames = function(user) {
+  const username = user
+    .toLowerCase()
+    .split(' ')
+    .map(name => name[0]).join('');
+    console.log(username)
+}
+createUsernames('Steven Thomas Williams')
+
+// console.log(username);
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -124,6 +135,7 @@ const movementsUSD = movements.map(function(mov){
 console.log(`${movementsUSD}`);
 console.log(movements); */
 
+//USING THE ARROW FUNCTION
 const movementsUSD = movements.map(mov => mov * eurToUsd
 )
 console.log(movementsUSD);
