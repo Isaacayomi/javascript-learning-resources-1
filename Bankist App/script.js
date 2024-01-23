@@ -62,36 +62,44 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
+//USING THE FOREACH METHOD
 const displayMovements = function (movements) {
-  containerMovements.innerHTML = " "; //Empty the movement container
-  movements.forEach(function (mov, i) { //Remember, forEach loop actually accepts three arguements which are the current element of the array, the index and the entire array
+  containerMovements.innerHTML = ' '; //Empty the movement container
+  movements.forEach(function (mov, i) {
+    //Remember, forEach loop actually accepts three arguements which are the current element of the array, the index and the entire array
 
-    const type = mov > 0 ? "deposit" : "withdrawal"
-
+    const type = mov > 0 ? 'deposit' : 'withdrawal';
 
     const html = `
   <div class="movements__row">
-          <div class="movements__type movements__type--${type}">${i + 1} ${type}</div>
+          <div class="movements__type movements__type--${type}">${
+      i + 1
+    } ${type}</div>
           <div class="movements__value">${Math.abs(mov)}</div>
         </div>
   `;
 
-    containerMovements.insertAdjacentHTML('afterbegin', html)
-  })
-}
+    containerMovements.insertAdjacentHTML('afterbegin', html);
+  });
+};
 displayMovements(account2.movements);
 
-
-const createUsernames = function(accs) {
-accs.forEach(function(acc) {
-  acc.username = acc.owner.toLowerCase().split(' ').map(function(name) {
-    return name[0]
-  }).join('');
-})
-console.log(accs)
-}
+//USING THE MAP METHOD
+const createUsernames = function (accs) {
+  accs.forEach(function (acc) {
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(' ')
+      .map(function (name) {
+        return name[0];
+      })
+      .join('');
+  });
+  console.log(accs);
+};
 createUsernames(accounts);
-// console.log(accounts)
+
+//USING THE FILTER METHOD
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -102,7 +110,7 @@ const currencies = new Map([
   ['EUR', 'Euro'],
   ['GBP', 'Pound sterling'],
 ]);
- 
+
 /////////////////////////////////////////////////
 
 ////////////// CODING CHALLENGE 1
@@ -127,7 +135,7 @@ correctedData.forEach(function(dogAge, i) {
 checkDogs([9,16,6,8,3], [10, 5, 6, 1, 4]) */
 
 //THE MAP METHOD
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300]; 
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 const eurToUsd = 1.1;
 /*
 const movementsUSD = movements.map(function(mov){
@@ -137,17 +145,10 @@ console.log(`${movementsUSD}`);
 console.log(movements); */
 
 //USING THE ARROW FUNCTION
-const movementsUSD = movements.map(mov => mov * eurToUsd
-)
+const movementsUSD = movements.map(mov => mov * eurToUsd);
 console.log(movementsUSD);
 console.log(movements);
 
 // const movementsUSD = movements.map(mov => mov * eurToUsd);
 // console.log(movements)
 // console.log(movementsUSD)
-
-
-
-
-
- 
