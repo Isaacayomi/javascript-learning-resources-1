@@ -90,9 +90,9 @@ const createUsernames = function (accs) {
     acc.username = acc.owner
       .toLowerCase()
       .split(' ')
-      .map(function (name) {
-        return name[0];
-      })
+      .map( name => 
+       name[0]
+      )
       .join('');
   });
   console.log(accs);
