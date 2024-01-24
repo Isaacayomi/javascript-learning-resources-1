@@ -99,7 +99,6 @@ const createUsernames = function (accs) {
 };
 createUsernames(accounts);
 
-//USING THE FILTER METHOD
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -137,6 +136,16 @@ checkDogs([9,16,6,8,3], [10, 5, 6, 1, 4]) */
 //THE MAP METHOD
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 const eurToUsd = 1.1;
+
+//USING THE FILTER METHOD
+const deposit = movements.filter(function(mov) {
+  return mov > 0;
+})
+console.log('New arrays are: ')
+console.log(deposit)
+console.log(movements)
+
+
 /*
 const movementsUSD = movements.map(function(mov){
   return mov * eurToUsd;
