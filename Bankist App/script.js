@@ -90,16 +90,23 @@ const createUsernames = function (accs) {
     acc.username = acc.owner
       .toLowerCase()
       .split(' ')
-      .map( name => 
-       name[0]
-      )
+      .map(name => name[0])
       .join('');
   });
   console.log(accs);
 };
 createUsernames(accounts);
 
+//USING THE DISPLAY METHOD TO CALCULATE THE TOTAL BALANCE
+const calcDisplayBalance = function(movements) {
+  const balance = movements.reduce(function(acc, el) {
+    return acc + el
+  }, 0)
+labelBalance.textContent = `${balance} EURO`
+};
 
+console.log('Total array balance: ')
+console.log(calcDisplayBalance(account1.movements))
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -138,13 +145,34 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 const eurToUsd = 1.1;
 
 //USING THE FILTER METHOD
-const deposit = movements.filter(function(mov) {
+const deposit = movements.filter(function (mov) {
   return mov > 0;
-})
-console.log('New arrays are: ')
-console.log(deposit)
-console.log(movements)
+});
+console.log('New arrays are: ');
+console.log(deposit);
+console.log(movements);
 
+const withdrawals = movements.filter(mov => mov < 0);
+
+console.log('Withdrawals are: ');
+console.log(withdrawals);
+
+//USING THE REDUCE METHOD: we use the reduce method to basically boil down all the elements in an array into one single value
+
+const balance = movements.reduce(function (acc, curr, i, arr) {
+  console.log(`iteration ${i}: ${acc} + ${curr}`);
+  return acc + curr;
+}, 0);
+console.log(`Balance is ${balance}`);
+
+const arrs = [300, 900, 500];
+let tots = 0;
+
+for (const el of arrs) {
+  tots += el;
+}
+console.log('Total arr is: ');
+console.log(tots);
 
 /*
 const movementsUSD = movements.map(function(mov){
