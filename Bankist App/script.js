@@ -98,15 +98,15 @@ const createUsernames = function (accs) {
 createUsernames(accounts);
 
 //USING THE DISPLAY METHOD TO CALCULATE THE TOTAL BALANCE
-const calcDisplayBalance = function(movements) {
-  const balance = movements.reduce(function(acc, el) {
-    return acc + el
-  }, 0)
-labelBalance.textContent = `${balance} EURO`
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce(function (acc, el) {
+    return acc + el;
+  }, 0);
+  labelBalance.textContent = `${balance} EURO`;
 };
 
-console.log('Total array balance: ')
-console.log(calcDisplayBalance(account1.movements))
+console.log('Total array balance: ');
+console.log(calcDisplayBalance(account1.movements));
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -189,3 +189,27 @@ console.log(movements);
 // const movementsUSD = movements.map(mov => mov * eurToUsd);
 // console.log(movements)
 // console.log(movementsUSD)
+
+////// CODING CHALLENGE 2
+let humanAge = 0;
+let dogAge = 0;
+const calcAverageHumanAge = function (ages) {
+  ages
+    .map(function (age, i) {
+      if (age <= 2) {
+        humanAge = 2 * dogAge;
+        age = humanAge;
+        console.log(age);
+      } else {
+        humanAge = 16 + age * 4;
+        age = humanAge
+        console.log(age);
+        // return humanAge;
+      }
+    })
+    .filter(function (age) {
+      return age >= 8
+    });
+};
+
+calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
