@@ -75,7 +75,7 @@ const displayMovements = function (movements) {
           <div class="movements__type movements__type--${type}">${
       i + 1
     } ${type}</div>
-          <div class="movements__value">${Math.abs(mov)}</div>
+          <div class="movements__value">${Math.abs(mov)}€</div>
         </div>
   `;
 
@@ -107,6 +107,27 @@ const calcDisplayBalance = function (movements) {
 
 console.log('Total array balance: ');
 console.log(calcDisplayBalance(account1.movements));
+
+const calcDisplaySummary = function (movements) {
+  const incomes = movements
+    .filter(function (deposits) {
+      return deposits > 0;
+    })
+    .reduce(function (acc, mov) {
+      return acc + mov;
+    }, 0);
+  labelSumIn.textContent = `${incomes}€`;
+
+  const out = movements
+    .filter(function (withdrawal) {
+      return withdrawal < 0;
+    })
+    .reduce(function (acc, mov) {
+      return acc + mov;
+    }, 0);
+    labelSumOut.textContent = Math.abs(`${out}`)
+};
+calcDisplaySummary(account1.movements);
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -209,23 +230,24 @@ console.log(movements);
 // calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
 
 const calcAverageHumanAge = function (ages) {
- const humanAge = ages.map(function(age) {
+  const humanAge = ages.map(function (age) {
     if (age <= 2) {
-      return 2 * age
+      return 2 * age;
     } else {
-      return 16 + age * 4
-    };
-  })
+      return 16 + age * 4;
+    }
+  });
   console.log(humanAge);
 
-  const adults = humanAge.filter(function(age) {
+  const adults = humanAge.filter(function (age) {
     return age >= 18;
-  })
+  });
   console.log(adults);
 
-  const average = adults.reduce(function(acc, age) {
-return (acc + age);
-  }, 0)/ adults.length;
-  console.log(average)
+  const average =
+    adults.reduce(function (acc, age) {
+      return acc + age;
+    }, 0) / adults.length;
+  console.log(average);
 };
 calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
