@@ -135,11 +135,12 @@ const calcDisplaySummary = function (movements) {
     .map(function (currentDeposit) {
       return 0.012 * currentDeposit;
     })
-    .reduce(function (acc, deposit) {
-      acc + deposit;
+    .reduce(function (acc, int) {
+      return acc + int;
     }, 0);
+    console.log(interest)
 
-    labelSumInterest.textContent = interest;
+    labelSumInterest.textContent = `${interest}`;
 };
 calcDisplaySummary(account1.movements);
 
