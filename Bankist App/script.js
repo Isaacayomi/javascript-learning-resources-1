@@ -102,7 +102,7 @@ const calcDisplayBalance = function (movements) {
   const balance = movements.reduce(function (acc, el) {
     return acc + el;
   }, 0);
-  labelBalance.textContent = `${balance} EURO`;
+  labelBalance.textContent = `${balance} €`;
 };
 
 console.log('Total array balance: ');
@@ -125,9 +125,24 @@ const calcDisplaySummary = function (movements) {
     .reduce(function (acc, mov) {
       return acc + mov;
     }, 0);
-    labelSumOut.textContent = Math.abs(`${out}`)
+  labelSumOut.textContent = Math.abs(`${out}`);
+  //interest is: 1.2% (0.012) of the deposited amount
+
+  const interest = movements
+    .filter(function (deposits) {
+      return deposits > 0;
+    })
+    .map(function (currentDeposit) {
+      return 0.012 * currentDeposit;
+    })
+    .reduce(function (acc, deposit) {
+      acc + deposit;
+    }, 0);
+
+    labelSumInterest.textContent = interest;
 };
 calcDisplaySummary(account1.movements);
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
