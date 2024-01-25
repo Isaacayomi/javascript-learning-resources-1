@@ -191,25 +191,41 @@ console.log(movements);
 // console.log(movementsUSD)
 
 ////// CODING CHALLENGE 2
-let humanAge = 0;
-let dogAge = 0;
-const calcAverageHumanAge = function (ages) {
-  ages
-    .map(function (age, i) {
-      if (age <= 2) {
-        humanAge = 2 * dogAge;
-        age = humanAge;
-        console.log(age);
-      } else {
-        humanAge = 16 + age * 4;
-        age = humanAge
-        console.log(age);
-        // return humanAge;
-      }
-    })
-    .filter(function (age) {
-      return age >= 8
-    });
-};
 
+// const calcAverageHumanAge = function (ages) {
+//   const humanAges = ages.map(age => (age <= 2 ? 2 * age : 16 + age * 4));
+//   console.log(humanAges);
+
+//   const adults = humanAges.filter(age => age >= 18);
+//   console.log(adults);
+
+//   const average =
+//     adults.reduce(function (acc, age) {
+//       return acc + age;
+//     }, 0) / adults.length;
+//   console.log(average);
+// };
+
+// calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
+
+const calcAverageHumanAge = function (ages) {
+ const humanAge = ages.map(function(age) {
+    if (age <= 2) {
+      return 2 * age
+    } else {
+      return 16 + age * 4
+    };
+  })
+  console.log(humanAge);
+
+  const adults = humanAge.filter(function(age) {
+    return age >= 18;
+  })
+  console.log(adults);
+
+  const average = adults.reduce(function(acc, age) {
+return (acc + age);
+  }, 0)/ adults.length;
+  console.log(average)
+};
 calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
