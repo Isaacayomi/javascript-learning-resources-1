@@ -46,7 +46,6 @@ const labelTimer = document.querySelector('.timer');
 
 const containerApp = document.querySelector('.app');
 const containerMovements = document.querySelector('.movements');
-// console.log(containerMovements)
 
 const btnLogin = document.querySelector('.login__btn');
 const btnTransfer = document.querySelector('.form__btn--transfer');
@@ -105,7 +104,6 @@ const calcDisplayBalance = function (movements) {
   labelBalance.textContent = `${balance} €`;
 };
 
-console.log('Total array balance: ');
 console.log(calcDisplayBalance(account1.movements));
 
 const calcDisplaySummary = function (movements) {
@@ -134,16 +132,17 @@ const calcDisplaySummary = function (movements) {
     })
     .map(function (currentDeposit) {
       return 0.012 * currentDeposit;
-    }).filter(function(int, i, arr) {
-      console.log(arr)
-      return int >= 1
+    })
+    .filter(function (int, i, arr) {
+      console.log(arr);
+      return int >= 1;
     })
     .reduce(function (acc, int) {
       return acc + int;
     }, 0);
-    console.log(interest)
+  console.log(interest);
 
-    labelSumInterest.textContent = `${interest}€`;
+  labelSumInterest.textContent = `${interest}€`;
 };
 calcDisplaySummary(account1.movements);
 
@@ -188,13 +187,11 @@ const eurToUsd = 1.1;
 const deposit = movements.filter(function (mov) {
   return mov > 0;
 });
-console.log('New arrays are: ');
 console.log(deposit);
 console.log(movements);
 
 const withdrawals = movements.filter(mov => mov < 0);
 
-console.log('Withdrawals are: ');
 console.log(withdrawals);
 
 //USING THE REDUCE METHOD: we use the reduce method to basically boil down all the elements in an array into one single value
@@ -211,7 +208,6 @@ let tots = 0;
 for (const el of arrs) {
   tots += el;
 }
-console.log('Total arr is: ');
 console.log(tots);
 
 /*
@@ -248,25 +244,38 @@ console.log(movements);
 
 // calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
 
+// const calcAverageHumanAge = function (ages) {
+//   const humanAge = ages.map(function (age) {
+//     if (age <= 2) {
+//       return 2 * age;
+//     } else {
+//       return 16 + age * 4;
+//     }
+//   });
+//   console.log(humanAge);
+
+//   const adults = humanAge.filter(function (age) {
+//     return age >= 18;
+//   });
+//   console.log(adults);
+
+//   const average =
+//     adults.reduce(function (acc, age) {
+//       return acc + age;
+//     }, 0) / adults.length;
+//   console.log(average);
+// };
+// calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
+
+//CODING CHALLENGE 3 (rewriting the solution of the previous challenge using arrow function)
 const calcAverageHumanAge = function (ages) {
-  const humanAge = ages.map(function (age) {
-    if (age <= 2) {
-      return 2 * age;
-    } else {
-      return 16 + age * 4;
-    }
-  });
+  const humanAge =
+    ages
+      .map(age => (age <= 2 ? 2 * age : 16 + age * 4))
+      .filter(age => age >= 18)
+      .reduce((acc, age, i, arr) => {
+        acc + age;
+      }, 0) / arr.length;
   console.log(humanAge);
-
-  const adults = humanAge.filter(function (age) {
-    return age >= 18;
-  });
-  console.log(adults);
-
-  const average =
-    adults.reduce(function (acc, age) {
-      return acc + age;
-    }, 0) / adults.length;
-  console.log(average);
 };
 calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
