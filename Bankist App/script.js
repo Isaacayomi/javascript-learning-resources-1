@@ -147,9 +147,15 @@ const calcDisplaySummary = function (movements) {
 calcDisplaySummary(account1.movements);
 
 //Event handlers
+let currentAccount;
 btnLogin.addEventListener('click', function (e) {
   e.preventDefault(); //Prevents the form from submitting(prevents it from auto reloading)
   console.log('Login');
+
+  currentAccount = accounts.find(function (acct) {
+    return acct.username === inputLoginUsername.value;
+  });
+  console.log(currentAccount)
 });
 
 /////////////////////////////////////////////////
