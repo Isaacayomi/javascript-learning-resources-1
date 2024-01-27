@@ -81,7 +81,7 @@ const displayMovements = function (movements) {
     containerMovements.insertAdjacentHTML('afterbegin', html);
   });
 };
-displayMovements(account2.movements);
+// displayMovements(account2.movements);
 
 //USING THE MAP METHOD
 const createUsernames = function (accs) {
@@ -104,7 +104,7 @@ const calcDisplayBalance = function (movements) {
   labelBalance.textContent = `${balance} €`;
 };
 
-console.log(calcDisplayBalance(account1.movements));
+// console.log(calcDisplayBalance(account1.movements));
 
 const calcDisplaySummary = function (movements) {
   const incomes = movements
@@ -144,18 +144,30 @@ const calcDisplaySummary = function (movements) {
 
   labelSumInterest.textContent = `${interest}€`;
 };
-calcDisplaySummary(account1.movements);
+// calcDisplaySummary(account1.movements);
 
 //Event handlers
 let currentAccount;
 btnLogin.addEventListener('click', function (e) {
   e.preventDefault(); //Prevents the form from submitting(prevents it from auto reloading)
-  console.log('Login');
+  // console.log('Login');
 
   currentAccount = accounts.find(function (acct) {
     return acct.username === inputLoginUsername.value;
   });
-  console.log(currentAccount)
+  console.log(currentAccount);
+
+  if (currentAccount && currentAccount.pin === Number(inputLoginPin.value)) {
+    //display UI and a welcome message
+    labelWelcome.textContent = `Welcome back ${currentAccount.owner.split(' ')[0]}!`;
+    containerApp.style.opacity = 100;
+    //display movements
+    displayMovements(currentAccount.movements)
+    //display balance
+    calcDisplayBalance(currentAccount.movements)
+    //display summary
+    calcDisplaySummary(currentAccount.movements)
+  }
 });
 
 /////////////////////////////////////////////////
@@ -297,10 +309,10 @@ console.log(movements);
 console.log(firstWithdrawal); //returns the first element in the array that is greater than 0
 console.log(accounts);
 
-//USING THE FOR OF LOOP METHOD AND THE FIND METHOD IN THE BANKIST PROJECT
-for (const acct of accounts) {
-  const owner = accounts.find(function (account) {
-    return account.owner === 'Sarah Smith';
-  });
-  console.log(owner);
-}
+// //USING THE FOR OF LOOP METHOD AND THE FIND METHOD IN THE BANKIST PROJECT
+// for (const acct of accounts) {
+//   const owner = accounts.find(function (account) {
+//     return account.owner === 'Sarah Smith';
+//   });
+//   console.log(owner);
+// }
