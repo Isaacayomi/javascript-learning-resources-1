@@ -71,9 +71,8 @@ const displayMovements = function (movements) {
 
     const html = `
   <div class="movements__row">
-          <div class="movements__type movements__type--${type}">${
-      i + 1
-    } ${type}</div>
+          <div class="movements__type movements__type--${type}">${i + 1} ${type}
+            </div>
           <div class="movements__value">${Math.abs(mov)}€</div>
         </div>
   `;
@@ -106,8 +105,8 @@ const calcDisplayBalance = function (movements) {
 
 // console.log(calcDisplayBalance(account1.movements));
 
-const calcDisplaySummary = function (movements) {
-  const incomes = movements
+const calcDisplaySummary = function (acc) {
+  const incomes = acc.movements
     .filter(function (deposits) {
       return deposits > 0;
     })
@@ -116,7 +115,7 @@ const calcDisplaySummary = function (movements) {
     }, 0);
   labelSumIn.textContent = `${incomes}€`;
 
-  const out = movements
+  const out = acc.movements
     .filter(function (withdrawal) {
       return withdrawal < 0;
     })
@@ -131,7 +130,7 @@ const calcDisplaySummary = function (movements) {
       return deposits > 0;
     })
     .map(function (currentDeposit) {
-      return 0.012 * currentDeposit;
+      return currentDeposit * acc.interestRate;
     })
     .filter(function (int, i, arr) {
       console.log(arr);
@@ -159,14 +158,22 @@ btnLogin.addEventListener('click', function (e) {
 
   if (currentAccount && currentAccount.pin === Number(inputLoginPin.value)) {
     //display UI and a welcome message
-    labelWelcome.textContent = `Welcome back ${currentAccount.owner.split(' ')[0]}!`;
+    labelWelcome.textContent = `Welcome back ${
+      currentAccount.owner.split(' ')[0]
+    }!`;
+
+    //Clear input fields
+    inputLoginUsername.value = '';
+    inputLoginPin.value = '';
+
+    inputLoginPin.blur(); //makes the input field lose focus after successful login
     containerApp.style.opacity = 100;
     //display movements
-    displayMovements(currentAccount.movements)
+    displayMovements(currentAccount.movements);
     //display balance
-    calcDisplayBalance(currentAccount.movements)
+    calcDisplayBalance(currentAccount.movements);
     //display summary
-    calcDisplaySummary(currentAccount.movements)
+    calcDisplaySummary(currentAccount);
   }
 });
 
