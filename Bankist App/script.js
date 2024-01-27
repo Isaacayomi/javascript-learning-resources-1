@@ -146,6 +146,12 @@ const calcDisplaySummary = function (movements) {
 };
 calcDisplaySummary(account1.movements);
 
+//Event handlers
+btnLogin.addEventListener('click', function (e) {
+  e.preventDefault(); //Prevents the form from submitting(prevents it from auto reloading)
+  console.log('Login');
+});
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -272,8 +278,23 @@ const calcAverageHumanAge = ages =>
   ages
     .map(age => (age <= 2 ? 2 * age : 16 + age * 4))
     .filter(age => age >= 18)
-    .reduce((acc, age, i, arr) => 
-      acc + age / arr.length, 0);
+    .reduce((acc, age, i, arr) => acc + age / arr.length, 0);
 // console.log(humanAge);
 const ave1 = calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
 console.log(ave1);
+
+//USING THE FIND METHOD: used to retrieve one element from an array based on a certain condition
+const firstWithdrawal = movements.find(function (mov) {
+  return mov < 0;
+});
+console.log(movements);
+console.log(firstWithdrawal); //returns the first element in the array that is greater than 0
+console.log(accounts);
+
+//USING THE FOR OF LOOP METHOD AND THE FIND METHOD IN THE BANKIST PROJECT
+for (const acct of accounts) {
+  const owner = accounts.find(function (account) {
+    return account.owner === 'Sarah Smith';
+  });
+  console.log(owner);
+}
