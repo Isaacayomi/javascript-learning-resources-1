@@ -8,7 +8,7 @@
 <body>
     <form>
         <input type="text" name="username" class="loginUsername" placeholder="username">
-        <input type="text" name="password" maxlength="4" class="loginPin" placeholder="pin">
+        <input type="password" name="password" maxlength="4" class="loginPin" placeholder="pin">
         <button class="loginBtn">Login</button>
     </form>
 
@@ -47,12 +47,12 @@ createUserName(accounts);
 
 let currentAcct;
 loginButton.addEventListener('click', function(e){
-    e.preventDefault()
+    e.preventDefault() 
 
 
     currentAcct = accounts.find(function(accs){
 return accs.username === nameField.value && accs.pin === Number(pinField.value);
-console.log(accs.username)
+// console.log(accs.username)
 })
 console.log(currentAcct)
 
