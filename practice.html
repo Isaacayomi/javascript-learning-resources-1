@@ -51,7 +51,7 @@ loginButton.addEventListener('click', function(e){
 
 
     currentAcct = accounts.find(function(accs){
-return accs.username === pinField.value;
+return accs.username === nameField.value && accs.pin === Number(pinField.value);
 console.log(accs.username)
 })
 console.log(currentAcct)
