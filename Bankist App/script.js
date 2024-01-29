@@ -145,10 +145,10 @@ const calcDisplaySummary = function (acc) {
 };
 // calcDisplaySummary(account1.movements);
 
-//Event handlers
+//EVENT HANDLERS (LOGIN FEATURE)
 let currentAccount;
 btnLogin.addEventListener('click', function (e) {
-  e.preventDefault(); //Prevents the form from submitting(prevents it from auto reloading)
+  e.preventDefault(); //Prevents form from submitting(prevents it from auto reloading)
   // console.log('Login');
 
   currentAccount = accounts.find(function (acct) {

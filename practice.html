@@ -1,76 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
-    <style>
-        .tick {
-            text-decoration: line-through;
-        }
-    </style>
+    <title>Practice Project</title>
 </head>
-
 <body>
+    <form>
+        <input type="text" name="username" class="loginUsername" placeholder="username">
+        <input type="text" name="password" maxlength="4" class="loginPin" placeholder="pin">
+        <button class="loginBtn">Login</button>
+    </form>
 
-    <!-- <input type="text" class="inputEl">
-<p class="displayPass"></p>
     <script>
-let element = document.querySelector('input');
-let display = document.querySelector('.displayPass')
 
-element.addEventListener('keydown', function(e) {
-    if (e.key === 'Enter') {
-        display.innerHTML = element.value;
-        console.log(element.value)
-        element.value = " ";
+const nameField = document.querySelector('.loginUsername');
+const pinField = document.querySelector('.loginPin');
+const loginButton = document.querySelector('.loginBtn');
 
-    }
+account1 = {
+    name: 'Isaac Ayomide',
+    pin: 1111
+};
+account2 = {
+    name: 'Okanmife Kemi',
+    pin: 2222
+};
+account3 = {
+    name: 'Daniel Swift',
+    pin: 3333
+};
+
+const accounts = [account1, account2, account3];
+console.log(accounts);
+
+
+const createUserName = function(accs) {
+    accounts.forEach(function(acc, i, accounts){
+acc.username = acc.name.toLowerCase().split(' ').map(mov => 
+ mov[0]
+).join('')
+    })
+    console.log(accs)
+}
+createUserName(accounts);
+
+let currentAcct;
+loginButton.addEventListener('click', function(e){
+    e.preventDefault()
+
+
+    currentAcct = accounts.find(function(accs){
+return accs.username === pinField.value;
+console.log(accs.username)
 })
-    </script> -->
+console.log(currentAcct)
 
-    <!-- A simple todo application -->
-    <input type="text" name="Tasks" class="TasksEl">
-    <button class="addTask">ADD</button>
-    <p class="displayTask">
-        <!-- <input type="checkbox" class="inputTag"> -->
-    </p>
+})
 
-    <script>
-        const taskElement = document.querySelector('.TasksEl');
-        const addTask = document.querySelector('.addTask');
-        const display = document.querySelector('.displayTask');
-
-        const addTodo = function () {
-            const taskList = taskElement.value;
-            const html = `
-            <p class="displayTask">
-        <input type="checkbox"> ${taskList}
-    </p>
-            `
-            display.insertAdjacentHTML('afterbegin', html);
-            taskElement.value = " ";
-            /*
-                        for (let i = 0; i < html.length; i++) {
-                            console.log(html[i])
-            
-                            if (!html[i].classList.includes('.tick')) {
-                                html[i].classList.add('.tick')
-                            } else {
-                                html[i].classList.remove('.tick')
-                            }
-                        } */
-        }
-
-        addTask.addEventListener('click', addTodo);
-
-
-
-    </script>
-
-
+</script>
 </body>
-
 </html>
