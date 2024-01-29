@@ -96,11 +96,12 @@ const createUsernames = function (accs) {
 createUsernames(accounts);
 
 //USING THE DISPLAY METHOD TO CALCULATE THE TOTAL BALANCE
-const calcDisplayBalance = function (movements) {
-  const balance = movements.reduce(function (acc, el) {
+const calcDisplayBalance = function (acct) {
+  acct.balance = acct.movements.reduce(function (acc, el) {
     return acc + el;
   }, 0);
-  labelBalance.textContent = `${balance} €`;
+  // acct.balance = balance;
+  labelBalance.textContent = `${acct.balance} €`;
 };
 
 // console.log(calcDisplayBalance(account1.movements));
@@ -171,11 +172,27 @@ btnLogin.addEventListener('click', function (e) {
     //display movements
     displayMovements(currentAccount.movements);
     //display balance
-    calcDisplayBalance(currentAccount.movements);
+    calcDisplayBalance(currentAccount);
     //display summary
     calcDisplaySummary(currentAccount);
   }
 });
+
+//IMPLEMENTING TRANSFERS
+btnTransfer.addEventListener('click', function(e){
+  e.preventDefault();
+
+  const amount = Number(inputTransferAmount.value);
+  const receiverAcct = accounts.find(function(acct){
+    return acct.username === inputTransferTo.value;
+  });
+  console.log(amount, receiverAcct);
+
+  if (amount > 0 && receiverAcct && currentAccount.balance >= amount && receiverAcct?.username !== currentAccount.username){
+    console.log('Transfer valid')
+
+  }
+})
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
