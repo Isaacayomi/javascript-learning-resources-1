@@ -96,12 +96,12 @@ const createUsernames = function (accs) {
 createUsernames(accounts);
 
 //USING THE DISPLAY METHOD TO CALCULATE THE TOTAL BALANCE
-const calcDisplayBalance = function (acct) {
-  acct.balance = acct.movements.reduce(function (acc, el) {
+const calcDisplayBalance = function (acc) {
+  acc.balance = acc.movements.reduce(function (acc, el) {
     return acc + el;
   }, 0);
-  // acct.balance = balance;
-  labelBalance.textContent = `${acct.balance} €`;
+  // acc.balance  =  balance;
+  labelBalance.textContent = `${acc.balance} €`;
 };
 
 // console.log(calcDisplayBalance(account1.movements));
@@ -178,21 +178,21 @@ btnLogin.addEventListener('click', function (e) {
   }
 });
 
-//IMPLEMENTING TRANSFERS
-btnTransfer.addEventListener('click', function(e){
-  e.preventDefault();
+//IMPLEMENTING TRANFER FEATURES
+btnTransfer.addEventListener('click', function(e) {
+e.preventDefault(); //prevents code from auto reloading 
 
-  const amount = Number(inputTransferAmount.value);
-  const receiverAcct = accounts.find(function(acct){
-    return acct.username === inputTransferTo.value;
-  });
-  console.log(amount, receiverAcct);
+const amount = Number(inputTransferAmount.value);
+const receiverAcct = accounts.find (acc => acc.username === inputTransferTo.value);
 
-  if (amount > 0 && receiverAcct && currentAccount.balance >= amount && receiverAcct?.username !== currentAccount.username){
-    console.log('Transfer valid')
+//the code below checks if the amount to be sent is greater than 0 and if the current account balance is greater or equal to the amount to be sent, and also check if the receiver account actually exists before sending to it, then lastly, checks if the receiver account username is not the same as the account receiving the money.
+if (amount > 0 && currentAccount.balance >= amount && receiverAcct?.username !== currentAccount.username) {
+console.log('Transfer Valid!')
+}
+console.log(amount, receiverAcct)
 
-  }
 })
+
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
