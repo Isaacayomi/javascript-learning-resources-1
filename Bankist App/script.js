@@ -191,7 +191,7 @@ btnTransfer.addEventListener('click', function (e) {
   const receiverAcct = accounts.find(
     acc => acc.username === inputTransferTo.value
   );
-inputTransferAmount.value = inputTransferTo.value = ''
+  inputTransferAmount.value = inputTransferTo.value = '';
   //the code below checks if the amount to be sent is greater than 0 and if the current account balance is greater or equal to the amount to be sent, and also check if the receiver account actually exists before sending to it, then lastly, checks if the receiver account username is not the same as the account receiving the money.
   if (
     amount > 0 &&
@@ -207,6 +207,31 @@ inputTransferAmount.value = inputTransferTo.value = ''
     updateUI(currentAccount);
   }
   console.log(amount, receiverAcct);
+});
+
+//USING THE FINDINDEX METHOD
+//DELETE ACCOUNT
+
+btnClose.addEventListener('click', function (e) {
+  e.preventDefault();
+
+  if (
+    inputCloseUsername.value === currentAccount.username &&
+    Number(inputClosePin.value) === currentAccount.pin
+  ) {
+
+    const index = accounts.findIndex(function(acc){
+      return acc.username === currentAccount.username;
+    }) //finds the index of the found array (index to delete)
+    // console.log(index)
+    
+    //DELETE ACCOUNT
+    accounts.splice(index, 1)
+
+    //HIDE UI
+    containerApp.style.opacity = 0;
+    console.log(accounts)
+  }
 });
 
 /////////////////////////////////////////////////
