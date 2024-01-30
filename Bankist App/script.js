@@ -73,7 +73,7 @@ const displayMovements = function (movements) {
   <div class="movements__row">
           <div class="movements__type movements__type--${type}">${i + 1} ${type}
             </div>
-          <div class="movements__value">${Math.abs(mov)}€</div>
+          <div class="movements__value">${mov}€</div>
         </div>
   `;
 
@@ -146,6 +146,14 @@ const calcDisplaySummary = function (acc) {
 };
 // calcDisplaySummary(account1.movements);
 
+const updateUI = function (acc) {
+  //display movements
+  displayMovements(acc.movements);
+  //display balance
+  calcDisplayBalance(acc);
+  //display summary
+  calcDisplaySummary(acc);
+};
 //EVENT HANDLERS (LOGIN FEATURE)
 let currentAccount;
 btnLogin.addEventListener('click', function (e) {
@@ -169,30 +177,37 @@ btnLogin.addEventListener('click', function (e) {
 
     inputLoginPin.blur(); //makes the input field lose focus after successful login
     containerApp.style.opacity = 100;
-    //display movements
-    displayMovements(currentAccount.movements);
-    //display balance
-    calcDisplayBalance(currentAccount);
-    //display summary
-    calcDisplaySummary(currentAccount);
+
+    //Update UI
+    updateUI(currentAccount);
   }
 });
 
 //IMPLEMENTING TRANFER FEATURES
-btnTransfer.addEventListener('click', function(e) {
-e.preventDefault(); //prevents code from auto reloading 
+btnTransfer.addEventListener('click', function (e) {
+  e.preventDefault(); //prevents code from auto reloading
 
-const amount = Number(inputTransferAmount.value);
-const receiverAcct = accounts.find (acc => acc.username === inputTransferTo.value);
+  const amount = Number(inputTransferAmount.value);
+  const receiverAcct = accounts.find(
+    acc => acc.username === inputTransferTo.value
+  );
+inputTransferAmount.value = inputTransferTo.value = ''
+  //the code below checks if the amount to be sent is greater than 0 and if the current account balance is greater or equal to the amount to be sent, and also check if the receiver account actually exists before sending to it, then lastly, checks if the receiver account username is not the same as the account receiving the money.
+  if (
+    amount > 0 &&
+    receiverAcct && //checks if the receiver account exists
+    currentAccount.balance >= amount &&
+    receiverAcct?.username !== currentAccount.username
+  ) {
+    //Doing the transfer
+    currentAccount.movements.push(-amount);
+    receiverAcct.movements.push(amount);
 
-//the code below checks if the amount to be sent is greater than 0 and if the current account balance is greater or equal to the amount to be sent, and also check if the receiver account actually exists before sending to it, then lastly, checks if the receiver account username is not the same as the account receiving the money.
-if (amount > 0 && currentAccount.balance >= amount && receiverAcct?.username !== currentAccount.username) {
-console.log('Transfer Valid!')
-}
-console.log(amount, receiverAcct)
-
-})
-
+    //Update UI
+    updateUI(currentAccount);
+  }
+  console.log(amount, receiverAcct);
+});
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
