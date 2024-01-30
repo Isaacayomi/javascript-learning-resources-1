@@ -410,3 +410,15 @@ const anyDeposit = movements.some(function (mov) {
   return mov >= 5000;
 });
 console.log(anyDeposit);
+
+//THE EVERY METHOD (only returns true if all the element in the array satisfy the condition passed in)
+console.log(account4.movements.every(function(mov){
+return mov > 0
+}))
+
+//Separating callback functions to make code DRY
+const depo = move => move > 0;
+console.log(movements.every(depo));
+console.log(movements)
+console.log(movements.filter(depo));
+
