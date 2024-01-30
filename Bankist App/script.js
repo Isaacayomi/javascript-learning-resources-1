@@ -209,6 +209,27 @@ btnTransfer.addEventListener('click', function (e) {
   console.log(amount, receiverAcct);
 });
 
+//LOAN FEATURE USING THE SOME METHOD
+btnLoan.addEventListener('click', function (e) {
+  e.preventDefault();
+
+  const amount = Number(inputLoanAmount.value);
+
+  if (amount > 0 && currentAccount.movements.some(function(mov){
+    return mov >= amount/10;
+  })) {
+
+    //Add the movement
+    currentAccount.movements.push(amount)
+
+    //update ui
+    updateUI(currentAccount)
+
+    //Clear input field
+    inputLoanAmount.value = ''
+  }
+});
+
 //USING THE FINDINDEX METHOD
 //DELETE ACCOUNT
 
@@ -219,18 +240,17 @@ btnClose.addEventListener('click', function (e) {
     inputCloseUsername.value === currentAccount.username &&
     Number(inputClosePin.value) === currentAccount.pin
   ) {
-
-    const index = accounts.findIndex(function(acc){
+    const index = accounts.findIndex(function (acc) {
       return acc.username === currentAccount.username;
-    }) //finds the index of the found array (index to delete)
+    }); //finds the index of the found array (index to delete)
     // console.log(index)
-    
+
     //DELETE ACCOUNT
-    accounts.splice(index, 1)
+    accounts.splice(index, 1);
 
     //HIDE UI
     containerApp.style.opacity = 0;
-    console.log(accounts)
+    console.log(accounts);
   }
 });
 
@@ -380,3 +400,13 @@ console.log(accounts);
 //   });
 //   console.log(owner);
 // }
+
+//SOME AND EVERY (ARRAY METHODS)
+//THE SOME METHOD
+console.log(movements);
+console.log(movements.includes(-130));
+
+const anyDeposit = movements.some(function (mov) {
+  return mov >= 5000;
+});
+console.log(anyDeposit);
