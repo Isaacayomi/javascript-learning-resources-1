@@ -422,3 +422,31 @@ console.log(movements.every(depo));
 console.log(movements)
 console.log(movements.filter(depo));
 
+//THE FLAT METHOD
+const arr = [[1, 2, 3], [4, 5, 6], 7, 8];
+const newArr = arr.flat();
+console.log(newArr);
+
+const accountMovements = accounts.map(function(acc){
+  return acc.movements
+});
+console.log(accountMovements)
+
+const allMovements = accountMovements.flat();
+const overallBalance = allMovements.reduce(function(acc, mov){
+  return acc + mov
+}, 0);
+console.log(allMovements)
+console.log(overallBalance)
+
+//THE FLATMAP METHOD
+const accountMovements2 = accounts.flatMap(function(acc){
+  return acc.movements
+});
+console.log(accountMovements2)
+const overallBalance2 = accountMovements2.reduce(function(acc, mov){
+  return acc + mov
+}, 0);
+console.log(accountMovements2)
+console.log(overallBalance2)
+
