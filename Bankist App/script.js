@@ -450,3 +450,11 @@ const overallBalance2 = accountMovements2.reduce(function(acc, mov){
 console.log(accountMovements2)
 console.log(overallBalance2)
 
+//SORTING ARRAYS WITH STRINGS
+const owners = ['Jonas', 'Prime', 'Adam', 'Martha'];
+console.log(owners.sort())
+
+//SORTING ARRAYS WITH NUMBERS
+console.log(movements);
+console.log(movements.sort());
+
