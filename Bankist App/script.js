@@ -154,6 +154,7 @@ const updateUI = function (acc) {
   //display summary
   calcDisplaySummary(acc);
 };
+
 //EVENT HANDLERS (LOGIN FEATURE)
 let currentAccount;
 btnLogin.addEventListener('click', function (e) {
@@ -215,18 +216,20 @@ btnLoan.addEventListener('click', function (e) {
 
   const amount = Number(inputLoanAmount.value);
 
-  if (amount > 0 && currentAccount.movements.some(function(mov){
-    return mov >= amount/10;
-  })) {
-
+  if (
+    amount > 0 &&
+    currentAccount.movements.some(function (mov) {
+      return mov >= amount / 10;
+    })
+  ) {
     //Add the movement
-    currentAccount.movements.push(amount)
+    currentAccount.movements.push(amount);
 
     //update ui
-    updateUI(currentAccount)
+    updateUI(currentAccount);
 
     //Clear input field
-    inputLoanAmount.value = ''
+    inputLoanAmount.value = '';
   }
 });
 
@@ -412,14 +415,16 @@ const anyDeposit = movements.some(function (mov) {
 console.log(anyDeposit);
 
 //THE EVERY METHOD (only returns true if all the element in the array satisfy the condition passed in)
-console.log(account4.movements.every(function(mov){
-return mov > 0
-}))
+console.log(
+  account4.movements.every(function (mov) {
+    return mov > 0;
+  })
+);
 
 //Separating callback functions to make code DRY
 const depo = move => move > 0;
 console.log(movements.every(depo));
-console.log(movements)
+console.log(movements);
 console.log(movements.filter(depo));
 
 //THE FLAT METHOD
@@ -427,34 +432,52 @@ const arr = [[1, 2, 3], [4, 5, 6], 7, 8];
 const newArr = arr.flat();
 console.log(newArr);
 
-const accountMovements = accounts.map(function(acc){
-  return acc.movements
+const accountMovements = accounts.map(function (acc) {
+  return acc.movements;
 });
-console.log(accountMovements)
+console.log(accountMovements);
 
 const allMovements = accountMovements.flat();
-const overallBalance = allMovements.reduce(function(acc, mov){
-  return acc + mov
+const overallBalance = allMovements.reduce(function (acc, mov) {
+  return acc + mov;
 }, 0);
-console.log(allMovements)
-console.log(overallBalance)
+console.log(allMovements);
+console.log(overallBalance);
 
 //THE FLATMAP METHOD
-const accountMovements2 = accounts.flatMap(function(acc){
-  return acc.movements
+const accountMovements2 = accounts.flatMap(function (acc) {
+  return acc.movements;
 });
-console.log(accountMovements2)
-const overallBalance2 = accountMovements2.reduce(function(acc, mov){
-  return acc + mov
+console.log(accountMovements2);
+const overallBalance2 = accountMovements2.reduce(function (acc, mov) {
+  return acc + mov;
 }, 0);
-console.log(accountMovements2)
-console.log(overallBalance2)
+console.log(accountMovements2);
+console.log(overallBalance2);
 
+//The sort method basically does its sorting on strings
 //SORTING ARRAYS WITH STRINGS
 const owners = ['Jonas', 'Prime', 'Adam', 'Martha'];
-console.log(owners.sort())
+console.log(owners.sort());
 
 //SORTING ARRAYS WITH NUMBERS
+//Sorting in ascending order
+movements.sort(function (a, b) {
+  if (a > b) {
+    return 1;
+  } else {
+    return -1;
+  }
+});
 console.log(movements);
-console.log(movements.sort());
+
+//Sorting in descending order
+movements.sort((a, b) => {
+  if (a > b) {
+    return -1;
+  } else {
+    return 1;
+  }
+});
+console.log(movements);
 
