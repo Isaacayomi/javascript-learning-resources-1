@@ -70,7 +70,7 @@ const displayMovements = function (movements, sort = false) {
     ? movements.slice().sort((a, b) => a - b)
     : movements;
 
-   sortedMovements.forEach(function (mov, i) {
+  sortedMovements.forEach(function (mov, i) {
     //Remember, forEach loop actually accepts three arguements which are the current element of the array, the index and the entire array
 
     const type = mov > 0 ? 'deposit' : 'withdrawal';
@@ -265,11 +265,11 @@ btnClose.addEventListener('click', function (e) {
 
 //SORT BUTTON
 let sorted = false;
-btnSort.addEventListener('click', function(e){
+btnSort.addEventListener('click', function (e) {
   e.preventDefault();
   displayMovements(currentAccount.movements, !sorted);
-  sorted = !sorted 
-})
+  sorted = !sorted;
+});
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -494,3 +494,11 @@ movements.sort((a, b) => {
   }
 });
 console.log(movements);
+
+//MORE WAYS OF CREATING AND FILLING ARRAYS
+console.log(new Array(1, 2, 3, 4, 5, 6, 7, 8, 9));
+
+const x = new Array(7); //if only one value is passed in the array constuctor as arguement, it returns 7 empty arrays
+console.log(x)
+const y = x.fill(2)
+console.log(y)
