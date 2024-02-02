@@ -7,18 +7,30 @@
 </head>
 <body>
     <form>
-        <input type="text" name="username" class="loginUsername" placeholder="username">
-        <input type="password" name="password" maxlength="4" class="loginPin" placeholder="pin">
-        <button class="loginBtn">Login</button>
+        <button class="sortBtn">Sort</button>
     </form>
 
     <script>
+const sortBtn = document.querySelector('.sortBtn');
 const num = [-100, 200, 500, -900, -1000, 1000];
 console.log(num)
+
+//a state variable
+let sorted = false;
+sortBtn.addEventListener('click', function(e){
+e.preventDefault();
 const sortedNum = num.sort(function(a, b){
-    return a - b;
+if (sorted == false){
+    return a - b
+} else {
+    return sorted == !sorted;
+}
+
+
 });
-console.log(sortedNum)
+console.log(sortedNum)})
+
+
 
 </script>
 </body>
