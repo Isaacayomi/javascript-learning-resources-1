@@ -13,50 +13,12 @@
     </form>
 
     <script>
-
-const nameField = document.querySelector('.loginUsername');
-const pinField = document.querySelector('.loginPin');
-const loginButton = document.querySelector('.loginBtn');
-
-account1 = {
-    name: 'Isaac Ayomide',
-    pin: 1111
-};
-account2 = {
-    name: 'Okanmife Kemi',
-    pin: 2222
-};
-account3 = {
-    name: 'Daniel Swift',
-    pin: 3333
-};
-
-const accounts = [account1, account2, account3];
-console.log(accounts);
-
-
-const createUserName = function(accs) {
-    accounts.forEach(function(acc, i, accounts){
-acc.username = acc.name.toLowerCase().split(' ').map(mov => 
- mov[0]
-).join('')
-    })
-    console.log(accs)
-}
-createUserName(accounts);
-
-let currentAcct;
-loginButton.addEventListener('click', function(e){
-    e.preventDefault() 
-
-
-    currentAcct = accounts.find(function(accs){
-return accs.username === nameField.value && accs.pin === Number(pinField.value);
-// console.log(accs.username)
-})
-console.log(currentAcct)
-
-})
+const num = [-100, 200, 500, -900, -1000, 1000];
+console.log(num)
+const sortedNum = num.sort(function(a, b){
+    return a - b;
+});
+console.log(sortedNum)
 
 </script>
 </body>
