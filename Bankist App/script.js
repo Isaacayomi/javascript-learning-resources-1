@@ -498,7 +498,75 @@ console.log(movements);
 //MORE WAYS OF CREATING AND FILLING ARRAYS
 console.log(new Array(1, 2, 3, 4, 5, 6, 7, 8, 9));
 
+//EMPTY ARRAYS + FILL METHODS
 const x = new Array(7); //if only one value is passed in the array constuctor as arguement, it returns 7 empty arrays
-console.log(x)
-const y = x.fill(2)
-console.log(y)
+console.log(x);
+const y = x.fill(2);
+console.log(y);
+y.fill(12, 2, 4);
+console.log(y);
+
+const Arr = [1, 2, 3, 4, 5, 6];
+Arr.fill(23, 4, 6);
+console.log(Arr);
+
+//Array.from
+const z = Array.from({ length: 8 }, () => 12); //the second arguement of the .from method is a mapping method
+console.log(z);
+
+const zz = Array.from({ length: 7 }, (_, i) => i + 1);
+console.log(zz);
+
+//Generating random dice rolls
+const diceRolls = Array.from(
+  { length: 100 },
+  (_, i) => i + Math.floor(Math.random() * 6)
+);
+console.log(diceRolls);
+
+labelBalance.addEventListener('click', function () {
+  const movementsUI = Array.from(
+    document.querySelectorAll('.movements__value')
+  );
+  console.log(movementsUI.map(el => el.textContent.replace('€', '')));
+});
+
+//FINAL TEST OF THIS SECTION
+//TEST DATA
+const dogs = [
+  {
+    weight: 22,
+    curFood: 250,
+    owners: ['Alice', 'Bob'],
+  },
+
+  {
+    weight: 8,
+    curFood: 200,
+    owners: ['Matilda'],
+  },
+
+  {
+    weight: 13,
+    curFood: 275,
+    owners: ['Sarah'],
+  },
+
+  {
+    weight: 32,
+    curFood: 340,
+    owners: ['Micheal'],
+  },
+];
+
+//Task 1
+const recommendedFoodPortion = dogs.forEach(function (mov, i) {
+  return (mov.recommendedFood = `${mov.weight ** 0.75 * 28} grams`);
+});
+
+//Task 2
+
+const sarahDog = dogs.find(function (dog) {
+  const owner = dog.owners == 'Sarah';
+});
+console.log(sarahDog())
