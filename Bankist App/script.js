@@ -549,7 +549,7 @@ const dogs = [
   {
     weight: 13,
     curFood: 275,
-    owners: ['Sarah'],
+    owners: ['Sarah', 'John'],
   },
 
   {
@@ -561,12 +561,15 @@ const dogs = [
 
 //Task 1
 const recommendedFoodPortion = dogs.forEach(function (mov, i) {
-  return (mov.recommendedFood = `${mov.weight ** 0.75 * 28} grams`);
+  return (mov.recommendedFood = `${Math.trunc(mov.weight ** 0.75 * 28)} grams`);
 });
 
 //Task 2
-
 const sarahDog = dogs.find(function (dog) {
-  const owner = dog.owners == 'Sarah';
+    return dog.owners.includes('Sarah');
 });
-console.log(sarahDog())
+if (sarahDog && sarahDog.curFood > Number(sarahDog.recommendedFood)){
+  console.log(`${sarahDog.owners[0]} dog is eating too much`)
+}else {
+  console.log(`${sarahDog.owners[0]} dog is eating too little`)
+}
