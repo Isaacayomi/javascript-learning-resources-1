@@ -561,15 +561,30 @@ const dogs = [
 
 //Task 1
 const recommendedFoodPortion = dogs.forEach(function (mov, i) {
-  return (mov.recommendedFood = `${Math.trunc(mov.weight ** 0.75 * 28)} grams`);
+  return (mov.recommendedFood = `${Math.trunc(mov.weight ** 0.75 * 28)}`);
 });
 
 //Task 2
 const sarahDog = dogs.find(function (dog) {
-    return dog.owners.includes('Sarah');
+  return dog.owners.includes('Sarah');
 });
-if (sarahDog && sarahDog.curFood > Number(sarahDog.recommendedFood)){
-  console.log(`${sarahDog.owners[0]} dog is eating too much`)
-}else {
-  console.log(`${sarahDog.owners[0]} dog is eating too little`)
+if (sarahDog && sarahDog.curFood > Number(sarahDog.recommendedFood)) {
+  console.log(`dog is eating too much`);
+} else {
+  console.log(`dog is eating too little`);
 }
+
+console.log(dogs);
+
+//Task 3
+const ownerEatTooMuch = dogs
+  .filter(dog => dog.curFood > Number(dog.recommendedFood))
+  .map(dog => dog.owners)
+  .flat();
+console.log(ownerEatTooMuch);
+
+const ownerEatTooLittle = dogs
+  .filter(dog => dog.curFood < Number(dog.recommendedFood))
+  .map(dog => dog.owners)
+  .flat();
+  console.log(ownerEatTooLittle)
