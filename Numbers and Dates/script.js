@@ -262,11 +262,29 @@ console.log(+"23"); //makes code more cleaner
 
 //Parsing
 console.log(Number.parseInt("900px", 10)); //finds and returns the number. Adding the second arguement converts it to base 10
-console.log(Number.parseInt("e24", 2)); //returns NaN. converts to base 2 due to the second argument added  
+console.log(Number.parseInt("e24", 2)); //returns NaN. converts to base 2 due to the second argument added
 
-console.log(Number.parseFloat('33.22px')); //reads and returns decimal numbers 
+console.log(Number.parseFloat("33.22px")); //reads and returns decimal numbers
 
-console.log(Number.isNaN(+'20px'))
+console.log(Number.isNaN(+"20px"));
 
-console.log(Number.isFinite(+'25')) //returns false if it is a string, and true if it is a number
- 
+console.log(Number.isFinite(+"25")); //returns false if it is a string, and true if it is a number
+
+///////////////// MATHS AND ROUNDING
+console.log(Math.sqrt(25));
+//or
+console.log(25 ** (1 / 2)); //the square root
+console.log(27 ** (1 / 3)); //the cubic root
+
+console.log(Math.max(24, 5, 6, 7, 8, 900)); //returns the maximum value out of a list of values
+console.log(Math.min(900, 400, -20, 0)); //returns the minimum value out of a list of values
+
+//Using the mathematical PI method
+console.log(Math.PI)
+//calculating the area of a circle
+console.log(Math.PI * Number.parseFloat('25') ** 2);
+
+console.log(Math.random() * 6); //generates numbers between 0 and 6
+console.log(Math.trunc(Math.random() * 6)) + 1; //generates numbers from 0 to 6
+
+//4:18
