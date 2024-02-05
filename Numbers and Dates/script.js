@@ -94,7 +94,7 @@ const displayMovements = function (movements, sort = false) {
         <div class="movements__type movements__type--${type}">${
       i + 1
     } ${type}</div>
-        <div class="movements__value">${mov}€</div>
+        <div class="movements__value">${mov.toFixed(2)}€</div>
       </div>
     `;
 
@@ -104,19 +104,19 @@ const displayMovements = function (movements, sort = false) {
 
 const calcDisplayBalance = function (acc) {
   acc.balance = acc.movements.reduce((acc, mov) => acc + mov, 0);
-  labelBalance.textContent = `${acc.balance}€`;
+  labelBalance.textContent = `${acc.balance.toFixed(2)}€`;
 };
 
 const calcDisplaySummary = function (acc) {
   const incomes = acc.movements
     .filter((mov) => mov > 0)
     .reduce((acc, mov) => acc + mov, 0);
-  labelSumIn.textContent = `${incomes}€`;
+  labelSumIn.textContent = `${incomes.toFixed(2)}€`;
 
   const out = acc.movements
     .filter((mov) => mov < 0)
     .reduce((acc, mov) => acc + mov, 0);
-  labelSumOut.textContent = `${Math.abs(out)}€`;
+  labelSumOut.textContent = `${Math.abs(out.toFixed(2))}€`;
 
   const interest = acc.movements
     .filter((mov) => mov > 0)
@@ -126,7 +126,7 @@ const calcDisplaySummary = function (acc) {
       return int >= 1;
     })
     .reduce((acc, int) => acc + int, 0);
-  labelSumInterest.textContent = `${interest}€`;
+  labelSumInterest.textContent = `${interest.toFixed(2)}€`;
 };
 
 const createUsernames = function (accs) {
@@ -206,7 +206,7 @@ btnTransfer.addEventListener("click", function (e) {
 btnLoan.addEventListener("click", function (e) {
   e.preventDefault();
 
-  const amount = +inputLoanAmount.value;
+  const amount = Math.floor(inputLoanAmount.value); //rounds down the value inputted if it has decimal (12.7) = 13
 
   if (
     amount > 0 &&
@@ -280,11 +280,27 @@ console.log(Math.max(24, 5, 6, 7, 8, 900)); //returns the maximum value out of a
 console.log(Math.min(900, 400, -20, 0)); //returns the minimum value out of a list of values
 
 //Using the mathematical PI method
-console.log(Math.PI)
+console.log(Math.PI);
 //calculating the area of a circle
-console.log(Math.PI * Number.parseFloat('25') ** 2);
+console.log(Math.PI * Number.parseFloat("25") ** 2);
 
 console.log(Math.random() * 6); //generates numbers between 0 and 6
-console.log(Math.trunc(Math.random() * 6)) + 1; //generates numbers from 0 to 6
+console.log(Math.floor(Math.random() * 6)) + 1; //generates numbers from 0 to 6
 
-//4:18
+const randomInt = (min, max) => Math.trunc(Math.random() * (max - min) + 1);
+console.log(randomInt(20, 50));
+
+//Rounding Integers
+console.log(Math.trunc(23.3));
+
+console.log(Math.round(23.3));
+console.log(Math.round(23.9));
+
+console.log(Math.ceil(23.2));
+console.log(Math.ceil(23.9));
+
+console.log(Math.floor(23.9));
+console.log(Math.floor(23.9));
+
+//Floating point numbers (decimals)
+console.log( (2.7).toFixed(0))
