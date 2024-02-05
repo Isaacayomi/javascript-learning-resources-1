@@ -303,4 +303,21 @@ console.log(Math.floor(23.9));
 console.log(Math.floor(23.9));
 
 //Floating point numbers (decimals)
-console.log( (2.7).toFixed(0))
+console.log((2.7).toFixed(0));
+
+//The remainder operator (%)
+console.log(5 % 2); //returns the remainder which is 1
+console.log(8 % 3); //returns the remainder which is 2
+console.log(8 / 3);
+
+//checks whether a number is odd or even
+const isEven = (num) => num % 2 === 0;
+
+console.log(isEven(90));
+
+//converts to a real array since it's a node list
+labelBalance.addEventListener("click", function () {
+  [...document.querySelectorAll(".movements__row")].forEach(function (row, i) {
+    if (i % 2 === 0) row.style.backgroundColor = "orangered";
+  });
+});
