@@ -318,6 +318,47 @@ console.log(isEven(90));
 //converts to a real array since it's a node list
 labelBalance.addEventListener("click", function () {
   [...document.querySelectorAll(".movements__row")].forEach(function (row, i) {
-    if (i % 2 === 0) row.style.backgroundColor = "orangered";
+    if (i % 2 === 0) {
+      row.style.backgroundColor = "orangered";
+    } else {
+      row.style.backgroundColor = "green";
+    }
   });
 });
+
+//Working with Bigint
+console.log(2 ** 53 - 1);
+
+console.log(4888888888888888888888888889888888888912333333n);
+console.log(BigInt(4888888888888888888888888889888888888912333333n));
+
+//Create a date
+const now = new Date(); //i
+console.log(now);
+
+console.log(new Date("Tue Feb 06 2024 08:54:41")); //ii: passing dates as strings
+console.log(new Date(account1.movementsDates[0])); //iii
+
+console.log(new Date(2037, 10, 19, 15, 23, 5));
+
+console.log(new Date(0));
+console.log(new Date(3 * 24 * 60 * 60 * 1000)); //converting from days to milliseconds
+
+//Working with dates
+const future = new Date(2037, 10, 19, 15, 23);
+console.log(future);
+console.log(future.getFullYear());
+console.log(future.getMonth());
+console.log(future.getDate());
+console.log(future.getDay());
+console.log(future.getHours());
+console.log(future.getMinutes());
+console.log(future.getSeconds());
+console.log(future.toISOString());
+console.log(future.getTime()); //to get milliseconds
+
+//to get the current time stamp
+console.log(Date.now()); //gives the millisecons
+console.log(new Date(1707207007430)); //converting the above milliseconds to date
+
+//Note: the above get method also has a set version, i.e setFullYear(), setMonth, setDate, etc...
