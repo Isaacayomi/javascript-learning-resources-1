@@ -81,19 +81,28 @@ const inputClosePin = document.querySelector(".form__input--pin");
 /////////////////////////////////////////////////
 // Functions
 
-const displayMovements = function (movements, sort = false) {
+const displayMovements = function (acc, sort = false) {
   containerMovements.innerHTML = "";
 
-  const movs = sort ? movements.slice().sort((a, b) => a - b) : movements;
+  const movs = sort
+    ? acc.movements.slice().sort((a, b) => a - b)
+    : acc.movements;
 
   movs.forEach(function (mov, i) {
     const type = mov > 0 ? "deposit" : "withdrawal";
 
+    const date = new Date(acc.movementsDates[i]);
+    const current = new Date();
+    const currentDay = `${date.getDate()}`.padStart(2, 0);
+    const currentMonth = `${date.getMonth() + 1}`.padStart(2, 0); //the get month method is zero based
+    const currentYear = date.getFullYear();
+    const displayDate = `${currentDay}/${currentMonth}/${currentYear}`;
     const html = `
       <div class="movements__row">
         <div class="movements__type movements__type--${type}">${
       i + 1
     } ${type}</div>
+    <div class="movements__date">${displayDate}</div>
         <div class="movements__value">${mov.toFixed(2)}€</div>
       </div>
     `;
@@ -142,7 +151,7 @@ createUsernames(accounts);
 
 const updateUI = function (acc) {
   // Display movements
-  displayMovements(acc.movements);
+  displayMovements(acc);
 
   // Display balance
   calcDisplayBalance(acc);
@@ -153,7 +162,22 @@ const updateUI = function (acc) {
 
 ///////////////////////////////////////
 // Event handlers
+
+//FAKE ALWAYS LOGGED IN
 let currentAccount;
+currentAccount = account1;
+updateUI(currentAccount);
+containerApp.style.opacity = 100;
+
+//Implementing date
+const current = new Date();
+const currentDay = `${current.getDate()}`.padStart(2, 0);
+const currentMonth = `${current.getMonth() + 1}`.padStart(2, 0); //the get month method is zero based
+const currentYear = current.getFullYear();
+
+const hour = current.getHours();
+const min = current.getMinutes();
+labelDate.textContent = `${currentDay}/${currentMonth}/${currentYear}, ${hour}:${min}`;
 
 btnLogin.addEventListener("click", function (e) {
   // Prevent form from submitting
