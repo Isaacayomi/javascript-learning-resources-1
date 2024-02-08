@@ -19,11 +19,11 @@ const account1 = {
     "2019-11-18T21:31:17.178Z",
     "2019-12-23T07:42:02.383Z",
     "2020-01-28T09:15:04.904Z",
-    "2020-04-01T10:17:24.185Z",
+    "2024-01-05T10:17:24.185Z",
     "2020-05-08T14:11:59.604Z",
-    "2020-05-27T17:01:17.194Z",
-    "2020-07-11T23:36:17.929Z",
-    "2020-07-12T10:51:36.790Z",
+    "2037-03-04T17:01:17.194Z",
+    "2024-01-01T23:36:17.929Z",
+    "2024-01-07T10:51:36.790Z",
   ],
   currency: "EUR",
   locale: "pt-PT", // de-DE
@@ -81,6 +81,25 @@ const inputClosePin = document.querySelector(".form__input--pin");
 /////////////////////////////////////////////////
 // Functions
 
+const formatMovementDate = function (date) {
+  const calcDaysPassed = (date1, date2) =>
+    Math.round(Math.abs(date2 - date1) / (1000 * 60 * 60 * 24));
+
+  const daysPassed = calcDaysPassed(new Date(), date);
+  console.log(daysPassed);
+
+  if (daysPassed === 0) return "Today";
+  if (daysPassed === 1) return "Yesterday";
+  if (daysPassed <= 7) return `${daysPassed} days ago`;
+  else {
+    const current = new Date();
+    const currentDay = `${date.getDate()}`.padStart(2, 0);
+    const currentMonth = `${date.getMonth() + 1}`.padStart(2, 0); //the get month method is zero based
+    const currentYear = date.getFullYear();
+    return `${currentDay}/${currentMonth}/${currentYear}`;
+  }
+};
+
 const displayMovements = function (acc, sort = false) {
   containerMovements.innerHTML = "";
 
@@ -90,13 +109,9 @@ const displayMovements = function (acc, sort = false) {
 
   movs.forEach(function (mov, i) {
     const type = mov > 0 ? "deposit" : "withdrawal";
-
     const date = new Date(acc.movementsDates[i]);
-    const current = new Date();
-    const currentDay = `${date.getDate()}`.padStart(2, 0);
-    const currentMonth = `${date.getMonth() + 1}`.padStart(2, 0); //the get month method is zero based
-    const currentYear = date.getFullYear();
-    const displayDate = `${currentDay}/${currentMonth}/${currentYear}`;
+    const displayDate = formatMovementDate(date);
+
     const html = `
       <div class="movements__row">
         <div class="movements__type movements__type--${type}">${
@@ -389,7 +404,14 @@ console.log(future.toISOString());
 console.log(future.getTime()); //to get milliseconds
 
 //to get the current time stamp
-console.log(Date.now()); //gives the millisecons
+console.log(Date.now()); //gives the milliseconds
 console.log(new Date(1707207007430)); //converting the above milliseconds to date
 
 //Note: the above get method also has a set version, i.e setFullYear(), setMonth, setDate, etc...
+
+//Operation with dates
+//To calculate the number of days passed
+const calcDaysPassed = (date1, date2) =>
+  Math.abs(date2 - date1) / (1000 * 60 * 60 * 24); //(1000 millisecons is one seconds, * 60 seconds, * 60 minutes * 24 hours) to get the number of days
+const days1 = calcDaysPassed(new Date(2037, 3, 14), new Date(2037, 3, 4));
+console.log(days1);
