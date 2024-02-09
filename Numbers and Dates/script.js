@@ -194,6 +194,8 @@ const options = {
   year: "numeric", //or 2-digit
   weekday: "long", //shows the week day (e.g friday, monday etc)
 };
+
+//formatting the date based on the user's locale
 const locale = navigator.language;
 console.log(locale);
 labelDate.textContent = new Intl.DateTimeFormat(locale, options).format(
