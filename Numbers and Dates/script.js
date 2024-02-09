@@ -184,6 +184,22 @@ currentAccount = account1;
 updateUI(currentAccount);
 containerApp.style.opacity = 100;
 
+//Experimenting API
+const current = new Date();
+const options = {
+  hour: "numeric",
+  minute: "numeric",
+  day: "numeric",
+  month: "long", //or numeric or 2-digit
+  year: "numeric", //or 2-digit
+  weekday: "long", //shows the week day (e.g friday, monday etc)
+};
+const locale = navigator.language;
+console.log(locale);
+labelDate.textContent = new Intl.DateTimeFormat(locale, options).format(
+  current
+);
+
 btnLogin.addEventListener("click", function (e) {
   // Prevent form from submitting
   e.preventDefault();
@@ -415,3 +431,5 @@ const calcDaysPassed = (date1, date2) =>
   Math.abs(date2 - date1) / (1000 * 60 * 60 * 24); //(1000 millisecons is one seconds, * 60 seconds, * 60 minutes * 24 hours) to get the number of days
 const days1 = calcDaysPassed(new Date(2037, 3, 14), new Date(2037, 3, 4));
 console.log(days1);
+
+//INTERNATIONALIZING DATES(formating dates and numbers) using the internationlization API
