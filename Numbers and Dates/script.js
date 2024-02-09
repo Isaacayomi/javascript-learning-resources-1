@@ -81,7 +81,7 @@ const inputClosePin = document.querySelector(".form__input--pin");
 /////////////////////////////////////////////////
 // Functions
 
-const formatMovementDate = function (date) {
+const formatMovementDate = function (date, locale) {
   const calcDaysPassed = (date1, date2) =>
     Math.round(Math.abs(date2 - date1) / (1000 * 60 * 60 * 24));
 
@@ -92,11 +92,12 @@ const formatMovementDate = function (date) {
   if (daysPassed === 1) return "Yesterday";
   if (daysPassed <= 7) return `${daysPassed} days ago`;
   else {
-    const current = new Date();
-    const currentDay = `${date.getDate()}`.padStart(2, 0);
-    const currentMonth = `${date.getMonth() + 1}`.padStart(2, 0); //the get month method is zero based
-    const currentYear = date.getFullYear();
-    return `${currentDay}/${currentMonth}/${currentYear}`;
+    // const current = new Date();
+    // const currentDay = `${date.getDate()}`.padStart(2, 0);
+    // const currentMonth = `${date.getMonth() + 1}`.padStart(2, 0); //the get month method is zero based
+    // const currentYear = date.getFullYear();
+    // return `${currentDay}/${currentMonth}/${currentYear}`;
+    return new Intl.DateTimeFormat(locale).format(date);
   }
 };
 
@@ -110,7 +111,7 @@ const displayMovements = function (acc, sort = false) {
   movs.forEach(function (mov, i) {
     const type = mov > 0 ? "deposit" : "withdrawal";
     const date = new Date(acc.movementsDates[i]);
-    const displayDate = formatMovementDate(date);
+    const displayDate = formatMovementDate(date, acc.locale);
 
     const html = `
       <div class="movements__row">
@@ -184,24 +185,6 @@ currentAccount = account1;
 updateUI(currentAccount);
 containerApp.style.opacity = 100;
 
-//Experimenting API
-const current = new Date();
-const options = {
-  hour: "numeric",
-  minute: "numeric",
-  day: "numeric",
-  month: "long", //or numeric or 2-digit
-  year: "numeric", //or 2-digit
-  weekday: "long", //shows the week day (e.g friday, monday etc)
-};
-
-//formatting the date based on the user's locale
-const locale = navigator.language;
-console.log(locale);
-labelDate.textContent = new Intl.DateTimeFormat(locale, options).format(
-  current
-);
-
 btnLogin.addEventListener("click", function (e) {
   // Prevent form from submitting
   e.preventDefault();
@@ -220,13 +203,31 @@ btnLogin.addEventListener("click", function (e) {
 
     //Implementing date
     const current = new Date();
-    const currentDay = `${current.getDate()}`.padStart(2, 0);
-    const currentMonth = `${current.getMonth() + 1}`.padStart(2, 0); //the get month method is zero based
-    const currentYear = current.getFullYear();
+    //Experimenting API
+    const options = {
+      hour: "numeric",
+      minute: "numeric",
+      day: "numeric",
+      month: "numeric", //or numeric or 2-digit
+      year: "numeric", //or 2-digit
+      // weekday: "long", shows the week day (e.g friday, monday etc)
+    };
 
-    const hour = `${current.getHours()}`.padStart(2, 0);
-    const min = `${current.getMinutes()}`.padStart(2, 0);
-    labelDate.textContent = `${currentDay}/${currentMonth}/${currentYear}. ${hour}:${min}`;
+    //formatting the date based on the user's locale
+    // const locale = navigator.language;
+    // console.log(locale);
+    labelDate.textContent = new Intl.DateTimeFormat(
+      currentAccount.locale,
+      options
+    ).format(current);
+
+    // const currentDay = `${current.getDate()}`.padStart(2, 0);
+    // const currentMonth = `${current.getMonth() + 1}`.padStart(2, 0); //the get month method is zero based
+    // const currentYear = current.getFullYear();
+
+    // const hour = `${current.getHours()}`.padStart(2, 0);
+    // const min = `${current.getMinutes()}`.padStart(2, 0);
+    // labelDate.textContent = `${currentDay}/${currentMonth}/${currentYear}. ${hour}:${min}`;
 
     // Clear input fields
     inputLoginUsername.value = inputLoginPin.value = "";
