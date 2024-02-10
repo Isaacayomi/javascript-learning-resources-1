@@ -7,28 +7,37 @@
 </head>
 <body>
     <form>
-        <button class="sortBtn">Sort</button>
+        <button class="sortBtn">PREVIEW</button>
     </form>
 
     <script>
-const sortBtn = document.querySelector('.sortBtn');
-const num = [-100, 200, 500, -900, -1000, 1000];
-console.log(num)
+// const sortBtn = document.querySelector('.sortBtn');
+// const num = [-100, 200, 500, -900, -1000, 1000];
+// console.log(num)
 
-//a state variable
-let sorted = false;
-sortBtn.addEventListener('click', function(e){
-e.preventDefault();
-const sortedNum = num.sort(function(a, b){
-if (sorted == false){
-    return a - b
-} else {
-    return sorted == !sorted;
+// //a state variable
+// let sorted = false;
+// sortBtn.addEventListener('click', function(e){
+// e.preventDefault();
+// const sortedNum = num.sort(function(a, b){
+// if (sorted == false){
+//     return a - b
+// } else {
+//     return sorted == !sorted;
+// }
+
+
+// });
+// console.log(sortedNum)})
+
+//Practicing the setTimeout function
+const timerBtn = document.querySelector('.sortBtn');
+
+const timer = (e) => {
+    e.preventDefault();
+    setTimeout(()=>alert('Hello Prime'), 2000)
 }
-
-
-});
-console.log(sortedNum)})
+timerBtn.addEventListener('click', timer);
 
 
 
