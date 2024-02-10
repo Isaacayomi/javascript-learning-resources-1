@@ -161,7 +161,11 @@ const calcDisplaySummary = function (acc) {
       return int >= 1;
     })
     .reduce((acc, int) => acc + int, 0);
-  labelSumInterest.textContent = formatCur(acc.balance, acc.locale, acc.currency);
+  labelSumInterest.textContent = formatCur(
+    acc.balance,
+    acc.locale,
+    acc.currency
+  );
 };
 
 const createUsernames = function (accs) {
@@ -456,4 +460,22 @@ console.log("US", new Intl.NumberFormat("en-US", options).format(num)); //format
 console.log(
   "GERMANY:       ",
   new Intl.NumberFormat("de-DE", options).format(num)
+);
+
+//TIMER: SETTIMEOUT & SET INTERVAL
+//Set time out timer only runs once after a defined time while the set interval timer keeps running forever until we stop it
+setTimeout(
+  (ing1, ing2) => console.log(`Here is your pizza with ${ing1} and ${ing2}`),
+  3000,
+  "olives",
+  "spinach"
+);
+
+console.log("Waiting...");
+
+setTimeout(
+  (boy, girl) => console.log(`${boy} is the boy and ${girl} is the girl`),
+  4000,
+  "Prime",
+  "Mercy"
 );
