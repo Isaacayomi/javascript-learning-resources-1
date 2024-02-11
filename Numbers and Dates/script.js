@@ -468,9 +468,10 @@ console.log(
 //TIMER: SETTIMEOUT & SET INTERVAL
 //Set time out timer only runs once after a defined time while the set interval timer keeps running forever until we stop it
 //setTimeout function
-console.log("in 3, 2, 1");
-setTimeout(() => console.log("Well done"), 3000);
+// console.log("in 3, 2, 1");
+// setTimeout(() => console.log("Well done"), 3000);
 
+/*
 setTimeout(
   (ing1, ing2) => console.log(`Here is your pizza with ${ing1} and ${ing2}`),
   3000,
@@ -485,8 +486,9 @@ setTimeout(
   4000,
   "Prime",
   "Mercy"
-);
+); */
 
+/*
 //Another way to use arguements with the settimeout function by using the spread operator
 const ingredients = ["Olives", "Spinach"];
 const pizzaTimer = setTimeout(
@@ -502,14 +504,12 @@ const pizzaTimer = setTimeout(
 if (ingredients.includes("spinach")) {
   clearTimeout(pizzaTimer);
 }
+*/
 
 //creating a clock with the setInterval function
-setInterval(function(){
-const now = new Date();
-console.log(now)
+setInterval(function () {
+  const now = new Date();
+  console.log(
+    `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`
+  );
 }, 1000);
-
-setInterval(function(){
-  const text = `I love Mercy`;
-  console.log(text)
-}, 1000)
