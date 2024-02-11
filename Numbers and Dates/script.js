@@ -288,6 +288,7 @@ btnLoan.addEventListener("click", function (e) {
     amount > 0 &&
     currentAccount.movements.some((mov) => mov >= amount * 0.1)
   ) {
+    //implementing the setTimeout function
     setTimeout(function () {
       // Add movement
       currentAccount.movements.push(amount);
@@ -466,6 +467,7 @@ console.log(
 
 //TIMER: SETTIMEOUT & SET INTERVAL
 //Set time out timer only runs once after a defined time while the set interval timer keeps running forever until we stop it
+//setTimeout function
 console.log("in 3, 2, 1");
 setTimeout(() => console.log("Well done"), 3000);
 
@@ -500,3 +502,14 @@ const pizzaTimer = setTimeout(
 if (ingredients.includes("spinach")) {
   clearTimeout(pizzaTimer);
 }
+
+//creating a clock with the setInterval function
+setInterval(function(){
+const now = new Date();
+console.log(now)
+}, 1000);
+
+setInterval(function(){
+  const text = `I love Mercy`;
+  console.log(text)
+}, 1000)
