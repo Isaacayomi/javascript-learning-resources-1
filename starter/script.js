@@ -18,12 +18,11 @@ const closeModal = function () {
   overlay.classList.add('hidden');
 };
 
-btnsOpenModal.forEach(function(btn){
-  btn.addEventListener('click', openModal)
-})
-
+//Instead of using the for loop, we use the forEach method
 // for (let i = 0; i < btnsOpenModal.length; i++)
 //   btnsOpenModal[i].addEventListener('click', openModal);
+
+btnsOpenModal.forEach(btn => btn.addEventListener('click', openModal));
 
 btnCloseModal.addEventListener('click', closeModal);
 overlay.addEventListener('click', closeModal);
@@ -33,3 +32,17 @@ document.addEventListener('keydown', function (e) {
     closeModal();
   }
 });
+
+////////////////////////
+//Selecting Element
+console.log(document.documentElement); //to select the entire document of any webpage
+console.log(document.head); //to select the head section of any webpage
+console.log(document.body); //to select the body of the webpage
+
+document.querySelector('.header'); // to select a single element with the className 
+const allSection = document.querySelectorAll('.section'); //to select multiple elements with the same className 
+console.log(allSection)
+
+document.getElementById('section-1') //to select an element with the idName
+const allButtons = document.getElementsByTagName('button')
+console.log(allButtons)
