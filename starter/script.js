@@ -54,7 +54,7 @@ document.getElementsByClassName('btn'); //to select element with class names
 
 const message = document.createElement('div');
 message.classList.add('cookie-message');
-message.innerHTML = `<p>We use cookies for improved functionality and analytics</p>`;
+message.innerHTML = `Use cookies for improved functionality and analytics <button class="btn btn-close-cookie">Got it! </button>`;
 
 //To insert the newly created elements in the DOM
 header.prepend(message); //inserts the newly created element as the first child of the header element
@@ -64,5 +64,9 @@ header.prepend(message); //inserts the newly created element as the first child 
 // header.before(message); //Adds the new element before the header element
 // header.after(message); //Adds the new element after the header element
 
-
 // Deleting Elements
+document
+  .querySelector('.btn-close-cookie')
+  .addEventListener('click', function () {
+    message.remove();
+  });
