@@ -39,10 +39,30 @@ console.log(document.documentElement); //to select the entire document of any we
 console.log(document.head); //to select the head section of any webpage
 console.log(document.body); //to select the body of the webpage
 
-document.querySelector('.header'); // to select a single element with the className 
-const allSection = document.querySelectorAll('.section'); //to select multiple elements with the same className 
-console.log(allSection)
+const header = document.querySelector('.header'); // to select a single element with the className
+const allSection = document.querySelectorAll('.section'); //to select multiple elements with the same className
+console.log(allSection);
 
-document.getElementById('section-1') //to select an element with the idName
-const allButtons = document.getElementsByTagName('button')
-console.log(allButtons)
+document.getElementById('section-1'); //to select an element with the idName
+const allButtons = document.getElementsByTagName('button'); //to select all elements by their tag name
+console.log(allButtons);
+
+document.getElementsByClassName('btn'); //to select element with class names
+
+//Creating and Inserting elements
+// .insertAdjacentHTML
+
+const message = document.createElement('div');
+message.classList.add('cookie-message');
+message.innerHTML = `<p>We use cookies for improved functionality and analytics</p>`;
+
+//To insert the newly created elements in the DOM
+header.prepend(message); //inserts the newly created element as the first child of the header element
+
+// header.append(message) //adds the created element as the last child of the header element
+
+// header.before(message); //Adds the new element before the header element
+// header.after(message); //Adds the new element after the header element
+
+
+// Deleting Elements
