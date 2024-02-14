@@ -75,32 +75,74 @@ document
 //////// Styles, Attributes and Classes
 // STYLES
 message.style.backgroundColor = 'darkblue'; //to add css styles
-message.style.width = '120%'
+message.style.width = '120%';
 
 //to get the styles used on an element
-console.log(getComputedStyle(message).fontSize)
+console.log(getComputedStyle(message).fontSize);
 
-//to add more values to a certaian property, e.g font-size 
-message.style.height = Number.parseFloat(getComputedStyle(message).height, 10) + 40 + 'px'
+//to add more values to a certain property, e.g font-size
+message.style.height =
+  Number.parseFloat(getComputedStyle(message).height, 10) + 40 + 'px';
 
-//Working with CSS custom properties (CSS variables);
-document.documentElement.style.setProperty('--color-primary', 'orangered');
-
+//Working with CSS custom properties (CSS variables), changing the css custom variable property using javascript
+// document.documentElement.style.setProperty('--color-primary', 'orangered');
 
 //ATTRIBUTES
 // Standard
 const logo = document.querySelector('.nav__logo');
-console.log(logo.alt)
-console.log(logo.src)
-console.log(logo.className)
-console.log(logo.id)
+console.log(logo.alt);
+console.log(logo.src);
+console.log(logo.className);
+console.log(logo.id);
+
+// Another example on attribute
+// To get the href value of an anchor tag
+const navLink = document.querySelector('.nav__link');
+console.log(navLink);
+
+console.log(navLink.getAttribute('href'));
 
 //to set another value for the attributes read
-logo.alt = 'Beautiful minimalist logo'
-console.log(logo.alt)
+logo.alt = 'Beautiful minimalist logo';
+console.log(logo.alt);
 
 //Non-standard
 // console.log(logo.getAttribute('designer'));
 
-console.log(logo.src) // gets the absolute location
-console.log(logo.getAttribute('src')) //to get the relative location of an attribute;
+console.log(logo.src); // gets the absolute location
+console.log(logo.getAttribute('src')); //to get the relative location of an attribute;
+
+// CLASSES
+// logo.classList.add('c'); // to add classname
+// logo.classList.remove(v); // to remove classname
+// logo.classList.toggle('c');
+// logo.classList.contains('s'); // chekcs if the logo element contains the 's' class
+
+// IMPLEMENTING SMOOTH SCROLLING
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
+
+btnScrollTo.addEventListener('click', function (e) {
+  // Getting the coordinates of the elements to scroll to
+  const s1coords = section1.getBoundingClientRect();
+  console.log(s1coords);
+
+  // Getting the coordinates of the button clicked (btnScrollTo)
+  console.log(e.target.getBoundingClientRect());
+
+  // Getting the current scroll positon (X/Y positions)
+  console.log('Current scroll [x/y]', window.pageXOffset, window.pageYOffset);
+
+  // Scrolling
+  // window.scrollTo(
+  //   s1coords.left + window.pageXOffset,
+  //   window.pageYOffset + s1coords.top
+  // );
+
+  // Scrolling and making the animation nice and smooth
+  window.scrollTo({
+    left: s1coords.left + window.pageXOffset,
+    top: window.pageYOffset + s1coords.top,
+    behavior: 'smooth',
+  });
+});
