@@ -546,3 +546,15 @@ setInterval(function () {
   const now = new Date();
   console.log(`${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`);
 }, 1000);
+
+
+// Practicing more on set intervals (counts from one to 100)
+// let time = 0;
+
+// const setInt = setInterval(() => {
+//   time++;
+//   console.log(time);
+//   if (time === 100) {
+//     clearInterval(setInt);
+//   }
+// }, 10);

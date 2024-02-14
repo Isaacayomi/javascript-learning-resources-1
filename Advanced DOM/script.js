@@ -151,8 +151,35 @@ btnScrollTo.addEventListener('click', function (e) {
   section1.scrollIntoView({ behavior: 'smooth' });
 });
 
+// Using the mouseenter event listener
 const h1 = document.querySelector('h1');
 
-h1.addEventListener('mouseenter', function (e) {
-alert('addEventListener: Great! You are reading the heading :D');
-});
+// h1.addEventListener('mouseenter', function (e) {
+//   alert('addEventListener: Great! You are reading the heading :D');
+// });
+
+// another way of attaching an event listener to an element (old fashioned)
+// h1.onmouseenter = function (e) {
+//   alert('Hii :D');
+// };
+
+// Removing Event Listeners
+const alertHi = function (e) {
+  alert('Hi : D');
+
+  // Let's say, to remove event listener after 5 seconds
+  setTimeout(() => {
+    h1.removeEventListener('mouseenter', alertHi);
+  }, 3000);
+};
+h1.addEventListener('mouseenter', alertHi);
+
+let time = 0;
+
+const setInt = setInterval(() => {
+  time++;
+  console.log(time);
+  if (time === 100) {
+    clearInterval(setInt);
+  }
+}, 10);
