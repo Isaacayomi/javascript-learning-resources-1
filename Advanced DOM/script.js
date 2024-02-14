@@ -35,6 +35,7 @@ document.addEventListener('keydown', function (e) {
 
 ////////////////////////
 //Selecting Element
+/*
 console.log(document.documentElement); //to select the entire document of any webpage
 console.log(document.head); //to select the head section of any webpage
 console.log(document.body); //to select the body of the webpage
@@ -51,9 +52,9 @@ document.getElementsByClassName('btn'); //to select element with class names
 
 //Creating and Inserting elements
 // .insertAdjacentHTML
-const message = document.createElement('div');
-message.classList.add('cookie-message');
-message.innerHTML = `Use cookies for improved functionality and analytics <button class="btn btn-close-cookie">Got it! </button>`;
+// const message = document.createElement('div');
+// message.classList.add('cookie-message');
+// message.innerHTML = `Use cookies for improved functionality and analytics <button class="btn btn-close-cookie">Got it! </button>`;
 
 header.insertAdjacentElement('beforebegin', message); // beforebegin, afterbegin, beforened, afterend
 
@@ -117,7 +118,7 @@ console.log(logo.getAttribute('src')); //to get the relative location of an attr
 // logo.classList.remove(v); // to remove classname
 // logo.classList.toggle('c');
 // logo.classList.contains('s'); // chekcs if the logo element contains the 's' class
-
+*/
 // IMPLEMENTING SMOOTH SCROLLING
 const btnScrollTo = document.querySelector('.btn--scroll-to');
 const section1 = document.querySelector('#section--1');
@@ -140,9 +141,12 @@ btnScrollTo.addEventListener('click', function (e) {
   // );
 
   // Scrolling and making the animation nice and smooth
-  window.scrollTo({
-    left: s1coords.left + window.pageXOffset,
-    top: window.pageYOffset + s1coords.top,
-    behavior: 'smooth',
-  });
+  // window.scrollTo({
+  //   left: s1coords.left + window.pageXOffset,
+  //   top: window.pageYOffset + s1coords.top,
+  //   behavior: 'smooth',
+  // });
+
+  // Modern way of scrolling
+  section1.scrollIntoView({ behavior: 'smooth' });
 });

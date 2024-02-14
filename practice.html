@@ -6,9 +6,16 @@
     <title>Practice Project</title>
 </head>
 <body>
+    <div  style="height: 100vh">
+        <h1 >This is the top of the page</h1>
     <form>
-        <button class="sortBtn">PREVIEW</button>
+        <button class="sortBtn">Show next section</button>
     </form>
+    </div>
+    
+    <div  style="height: 100vh" class="section1">
+        <p>The next section</p>
+    </div>
 
     <script>
 // const sortBtn = document.querySelector('.sortBtn');
@@ -31,13 +38,23 @@
 // console.log(sortedNum)})
 
 //Practicing the setTimeout function
-const timerBtn = document.querySelector('.sortBtn');
+// const timerBtn = document.querySelector('.sortBtn');
 
-const timer = (e) => {
-    e.preventDefault();
-    setTimeout(()=>alert('Hello Prime'), 2000)
-}
-timerBtn.addEventListener('click', timer);
+// const timer = (e) => {
+//     e.preventDefault();
+//     setTimeout(()=>alert('Hello Prime'), 2000)
+// }
+// timerBtn.addEventListener('click', timer);
+
+// PRACTICING SMOOTH SCROLLING
+const btn = document.querySelector('.sortBtn');
+const section = document.querySelector('.section1');
+
+btn.addEventListener('click', function(e) {
+    e.preventDefault()
+    // alert('Hii')
+    section.scrollIntoView({behavior: 'smooth'});
+})
 
 
 
