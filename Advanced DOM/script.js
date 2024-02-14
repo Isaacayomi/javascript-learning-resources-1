@@ -85,3 +85,22 @@ message.style.height = Number.parseFloat(getComputedStyle(message).height, 10) +
 
 //Working with CSS custom properties (CSS variables);
 document.documentElement.style.setProperty('--color-primary', 'orangered');
+
+
+//ATTRIBUTES
+// Standard
+const logo = document.querySelector('.nav__logo');
+console.log(logo.alt)
+console.log(logo.src)
+console.log(logo.className)
+console.log(logo.id)
+
+//to set another value for the attributes read
+logo.alt = 'Beautiful minimalist logo'
+console.log(logo.alt)
+
+//Non-standard
+// console.log(logo.getAttribute('designer'));
+
+console.log(logo.src) // gets the absolute location
+console.log(logo.getAttribute('src')) //to get the relative location of an attribute;
