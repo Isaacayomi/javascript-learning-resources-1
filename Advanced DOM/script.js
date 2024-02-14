@@ -51,7 +51,6 @@ document.getElementsByClassName('btn'); //to select element with class names
 
 //Creating and Inserting elements
 // .insertAdjacentHTML
-
 const message = document.createElement('div');
 message.classList.add('cookie-message');
 message.innerHTML = `Use cookies for improved functionality and analytics <button class="btn btn-close-cookie">Got it! </button>`;
@@ -67,8 +66,22 @@ header.insertAdjacentElement('beforebegin', message); // beforebegin, afterbegin
 // header.after(message); //Adds the new element after the header element
 
 // Deleting Elements
-// document
-//   .querySelector('.btn-close-cookie')
-//   .addEventListener('click', function () {
-//     message.remove();
-//   });
+document
+  .querySelector('.btn-close-cookie')
+  .addEventListener('click', function () {
+    message.remove();
+  });
+
+//////// Styles, Attributes and Classes
+// STYLES
+message.style.backgroundColor = 'darkblue'; //to add css styles
+message.style.width = '120%'
+
+//to get the styles used on an element
+console.log(getComputedStyle(message).fontSize)
+
+//to add more values to a certaian property, e.g font-size 
+message.style.height = Number.parseFloat(getComputedStyle(message).height, 10) + 40 + 'px'
+
+//Working with CSS custom properties (CSS variables);
+document.documentElement.style.setProperty('--color-primary', 'orangered');
