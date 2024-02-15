@@ -164,6 +164,7 @@ const h1 = document.querySelector('h1');
 // };
 
 // Removing Event Listeners
+/*
 const alertHi = function (e) {
   alert('Hi : D');
 
@@ -172,14 +173,26 @@ const alertHi = function (e) {
     h1.removeEventListener('mouseenter', alertHi);
   }, 3000);
 };
-h1.addEventListener('mouseenter', alertHi);
+h1.addEventListener('mouseenter', alertHi); */
 
-let time = 0;
+// EVENT PROPAGATION (CAPTURING AND BUBBLING);
+// (255,255, 255)
+// Generates random colors
+const randomInt = (min, max) =>
+  Math.floor(Math.random() * (max - min + 1) + min);
+const randomColor = () =>
+  `rgb(${randomInt(0, 255)}, ${randomInt(0, 255)},${randomInt(0, 255)})`;
+console.log(randomColor());
 
-const setInt = setInterval(() => {
-  time++;
-  console.log(time);
-  if (time === 100) {
-    clearInterval(setInt);
-  }
-}, 10);
+document.querySelector('.nav__link').addEventListener('click', function (e) {
+  this.style.backgroundColor = randomColor();
+});
+
+document.querySelector('.nav__links').addEventListener('click', function (e) {
+  this.style.backgroundColor = randomColor();
+
+});
+
+document.querySelector('.nav').addEventListener('click', function (e) {
+
+});
