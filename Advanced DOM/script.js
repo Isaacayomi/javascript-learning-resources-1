@@ -1,13 +1,13 @@
 'use strict';
-
-///////////////////////////////////////
-// Modal window
-
 const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
 
+///////////////////////////////////////
+// Modal window
 const openModal = function () {
   modal.classList.remove('hidden');
   overlay.classList.remove('hidden');
@@ -32,6 +32,47 @@ document.addEventListener('keydown', function (e) {
     closeModal();
   }
 });
+
+// BUTTON SCRIOLLING
+btnScrollTo.addEventListener('click', function (e) {
+  // Getting the coordinates of the elements to scroll to
+  const s1coords = section1.getBoundingClientRect();
+  console.log(s1coords);
+
+  // Getting the coordinates of the button clicked (btnScrollTo)
+  console.log(e.target.getBoundingClientRect());
+
+  // Getting the current scroll positon (X/Y positions)
+  console.log('Current scroll [x/y]', window.pageXOffset, window.pageYOffset);
+
+  // Scrolling
+  // window.scrollTo(
+  //   s1coords.left + window.pageXOffset,
+  //   window.pageYOffset + s1coords.top
+  // );
+
+  // Scrolling and making the animation nice and smooth
+  // window.scrollTo({
+  //   left: s1coords.left + window.pageXOffset,
+  //   top: window.pageYOffset + s1coords.top,
+  //   behavior: 'smooth',
+  // });
+
+  // Modern way of scrolling
+  section1.scrollIntoView({ behavior: 'smooth' });
+});
+
+// PAGE NAVIGATION
+// console.log(document.querySelectorAll('.nav__link'))
+document.querySelectorAll('.nav__link').forEach(el =>
+  el.addEventListener('click', function (e) {
+    e.preventDefault(); // Prevents the page from scrolling to the HTML element which has the ID name as the anchor tag
+
+    const id = this.getAttribute('href'); // to get the absolute url which is the (id = 'section--1')
+    console.log(id);
+    document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+  })
+);
 
 ////////////////////////
 //Selecting Element
@@ -119,37 +160,6 @@ console.log(logo.getAttribute('src')); //to get the relative location of an attr
 // logo.classList.toggle('c');
 // logo.classList.contains('s'); // chekcs if the logo element contains the 's' class
 */
-// IMPLEMENTING SMOOTH SCROLLING
-const btnScrollTo = document.querySelector('.btn--scroll-to');
-const section1 = document.querySelector('#section--1');
-
-btnScrollTo.addEventListener('click', function (e) {
-  // Getting the coordinates of the elements to scroll to
-  const s1coords = section1.getBoundingClientRect();
-  console.log(s1coords);
-
-  // Getting the coordinates of the button clicked (btnScrollTo)
-  console.log(e.target.getBoundingClientRect());
-
-  // Getting the current scroll positon (X/Y positions)
-  console.log('Current scroll [x/y]', window.pageXOffset, window.pageYOffset);
-
-  // Scrolling
-  // window.scrollTo(
-  //   s1coords.left + window.pageXOffset,
-  //   window.pageYOffset + s1coords.top
-  // );
-
-  // Scrolling and making the animation nice and smooth
-  // window.scrollTo({
-  //   left: s1coords.left + window.pageXOffset,
-  //   top: window.pageYOffset + s1coords.top,
-  //   behavior: 'smooth',
-  // });
-
-  // Modern way of scrolling
-  section1.scrollIntoView({ behavior: 'smooth' });
-});
 
 // Using the mouseenter event listener
 const h1 = document.querySelector('h1');
@@ -178,6 +188,7 @@ h1.addEventListener('mouseenter', alertHi); */
 // EVENT PROPAGATION (CAPTURING AND BUBBLING);
 // (255,255, 255)
 // Generates random colors
+/*
 const randomInt = (min, max) =>
   Math.floor(Math.random() * (max - min + 1) + min);
 const randomColor = () =>
@@ -189,7 +200,7 @@ document.querySelector('.nav__link').addEventListener('click', function (e) {
   console.log('LINK', e.target, e.currentTarget); //e.target basically means where the click event happens
 
   // Stop propagation
-  e.stopPropagation();
+  // e.stopPropagation(); not really a good idea to stop event propagation
 });
 
 document.querySelector('.nav__links').addEventListener('click', function (e) {
@@ -197,8 +208,10 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
   console.log('CONTAINER', e.target, e.currentTarget);
 });
 
-document.querySelector('.nav').addEventListener('click', function(e) {
-this.style.backgroundColor = randomColor();
-console.log('NAV', e.target, e.currentTarget); // e.currentTarget is the element on the which the event handler is attached. the e.currentTarget is also the same as the 'this' keyword
-})
+document.querySelector('.nav').addEventListener('click', function (e) {
+  this.style.backgroundColor = randomColor();
+  console.log('NAV', e.target, e.currentTarget); // e.currentTarget is the element on the which the event handler is attached. the e.currentTarget is also the same as the 'this' keyword
+});
 
+// EVENT DELEGATION (IMPLEMENTING SMOOTH SCROLLING)
+*/
