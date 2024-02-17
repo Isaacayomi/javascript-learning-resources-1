@@ -63,7 +63,7 @@ btnScrollTo.addEventListener('click', function (e) {
 });
 
 // PAGE NAVIGATION
-// console.log(document.querySelectorAll('.nav__link'))
+/*
 document.querySelectorAll('.nav__link').forEach(el =>
   el.addEventListener('click', function (e) {
     e.preventDefault(); // Prevents the page from scrolling to the HTML element which has the ID name as the anchor tag
@@ -72,7 +72,25 @@ document.querySelectorAll('.nav__link').forEach(el =>
     console.log(id);
     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
   })
-);
+); */
+
+// USING EVENT DELEGATION FOR PAGE NAVIGATION (STEPS)
+//1. Add event listener to common parent element
+//2. Determine what element originated the event
+
+// the parent element of the links
+document.querySelector('.nav__links').addEventListener('click', function (e) {
+  e.preventDefault();
+  console.log(e.target); // selects the element (the exact link) that is clicked in the parent element (nav container)
+
+  // Matching Strategy
+  if (e.target.classList.contains('nav__link')) {
+    console.log('LINK');
+    const id = e.target.getAttribute('href');
+    document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+  }
+ 
+});
 
 ////////////////////////
 //Selecting Element

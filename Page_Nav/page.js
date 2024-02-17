@@ -1,12 +1,26 @@
 const nav = document.querySelectorAll(".nav__link");
+// const navContainer = document.querySelector(".nav__links");
 
-nav.forEach(function (el) {
-  el.addEventListener("click", function (e) {
-    e.preventDefault();
-    console.log("LINK");
+// nav.forEach(function (el) {
+//   el.addEventListener("click", function (e) {
+//     e.preventDefault();
+//     console.log("LINK");
 
-    const id = this.getAttribute("href");
-    console.log(id);
+//     const id = this.getAttribute("href");
+//     console.log(id);
+//     document.querySelector(id).scrollIntoView({ behavior: "smooth" });
+//   });
+// });
+
+// Using event delegation
+// First, select the parent container
+document.querySelector(".nav__links").addEventListener("click", function (e) {
+  e.preventDefault();
+  console.log(e.target);
+
+  //if the current element clicked contains the class nav__link
+  if (e.target.classList.contains('nav__link')) {
+    const id = e.target.getAttribute("href");
     document.querySelector(id).scrollIntoView({ behavior: "smooth" });
-  });
+  }
 });
