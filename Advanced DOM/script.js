@@ -186,13 +186,19 @@ console.log(randomColor());
 
 document.querySelector('.nav__link').addEventListener('click', function (e) {
   this.style.backgroundColor = randomColor();
+  console.log('LINK', e.target, e.currentTarget); //e.target basically means where the click event happens
+
+  // Stop propagation
+  e.stopPropagation();
 });
 
 document.querySelector('.nav__links').addEventListener('click', function (e) {
   this.style.backgroundColor = randomColor();
-
+  console.log('CONTAINER', e.target, e.currentTarget);
 });
 
-document.querySelector('.nav').addEventListener('click', function (e) {
+document.querySelector('.nav').addEventListener('click', function(e) {
+this.style.backgroundColor = randomColor();
+console.log('NAV', e.target, e.currentTarget); // e.currentTarget is the element on the which the event handler is attached. the e.currentTarget is also the same as the 'this' keyword
+})
 
-});
