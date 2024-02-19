@@ -91,6 +91,16 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
   }
 });
 
+// BUILDING THE TABBED COMPONENT
+const tabs = document.querySelectorAll('.operations__tab');
+const tabsContainer = document.querySelector('.operations__tab-container');
+const tabsContent = document.querySelectorAll('.operations__content');
+
+//using event delegation (selecting the parent element of the buttons)
+tabsContainer.addEventListener('click', function(e) {
+  e.preventDefault();
+  const clicked = e.target;
+})
 ////////////////////////
 //Selecting Element
 /*
@@ -230,7 +240,7 @@ document.querySelector('.nav').addEventListener('click', function (e) {
   console.log('NAV', e.target, e.currentTarget); // e.currentTarget is the element on the which the event handler is attached. the e.currentTarget is also the same as the 'this' keyword
 });
 
-*/
+
 // DOM TRAVERSING (WALKING THROUGH THE DOM; SELECTING ELEMENT BASED ON ANOTHER ELEMENT)
 const h1 = document.querySelector('h1');
 console.log(h1);
@@ -252,5 +262,6 @@ h1.closest('.header').style.background = 'var(--gradient-secondary)'; // selects
 h1.closest('h1').style.background = 'var(--gradient-primary)';
 
 // Going sideways: selecting siblings
-console.log(h1.previousElementSibling)
-console.log(h1.nextElementSibling)
+console.log(h1.previousElementSibling);
+console.log(h1.nextElementSibling);
+*/
