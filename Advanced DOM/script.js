@@ -27,7 +27,7 @@ btnsOpenModal.forEach(btn => btn.addEventListener('click', openModal));
 btnCloseModal.addEventListener('click', closeModal);
 overlay.addEventListener('click', closeModal);
 
-document.addEventListener('keydown', function (e) {
+document.addEventListener('down', function (e) {
   if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
     closeModal();
   }
@@ -89,7 +89,6 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
     const id = e.target.getAttribute('href');
     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
   }
- 
 });
 
 ////////////////////////
@@ -180,7 +179,7 @@ console.log(logo.getAttribute('src')); //to get the relative location of an attr
 */
 
 // Using the mouseenter event listener
-const h1 = document.querySelector('h1');
+// const h1 = document.querySelector('h1');
 
 // h1.addEventListener('mouseenter', function (e) {
 //   alert('addEventListener: Great! You are reading the heading :D');
@@ -231,5 +230,27 @@ document.querySelector('.nav').addEventListener('click', function (e) {
   console.log('NAV', e.target, e.currentTarget); // e.currentTarget is the element on the which the event handler is attached. the e.currentTarget is also the same as the 'this' keyword
 });
 
-// EVENT DELEGATION (IMPLEMENTING SMOOTH SCROLLING)
 */
+// DOM TRAVERSING (WALKING THROUGH THE DOM; SELECTING ELEMENT BASED ON ANOTHER ELEMENT)
+const h1 = document.querySelector('h1');
+console.log(h1);
+
+// Going downwards: selecting child elements
+console.log(h1.querySelectorAll('.highlight')); // selects all the element with the highlight class that are a children of the h1 element
+console.log((h1.childNodes.textContent = 'hii')); // selects the direct children only
+console.log(h1.children); // modern way of selecting direct children of the h1 elements
+h1.firstElementChild.style.color = 'white'; // selects the first child of the h1 element
+h1.lastElementChild.style.color = 'orangered'; // selects the last child of the h1 element
+
+// Going upwards: selecting parent elements
+console.log(h1.parentNode); // selects the direct parent of the h1 element
+console.log(h1.parentElement); // functions as the above code (modern way)
+
+// Note: the closest method finds parent elements
+h1.closest('.header').style.background = 'var(--gradient-secondary)'; // selects the closest parent element that has the 'header' class
+
+h1.closest('h1').style.background = 'var(--gradient-primary)';
+
+// Going sideways: selecting siblings
+console.log(h1.previousElementSibling)
+console.log(h1.nextElementSibling)
