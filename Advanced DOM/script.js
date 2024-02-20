@@ -102,7 +102,6 @@ tabsContainer.addEventListener('click', function (e) {
 
   //Matching Strategy
   const clicked = e.target.closest('.operations__tab'); // the closest method is used to get the closest element that has a specific .class name
-  console.log(clicked);
 
   // A guard clause (an if statement that returns early if some condition is matched)
   if (!clicked) return; // to prevent errors
@@ -112,7 +111,7 @@ tabsContainer.addEventListener('click', function (e) {
     // Removes the active tab from other buttons
     t.classList.remove('operations__tab--active');
   });
-  tabsContent.forEach(c => c.classList.remove('operations__content--active'))
+  tabsContent.forEach(c => c.classList.remove('operations__content--active'));
   // and adding the active class on the button that's currently clicked
   clicked.classList.add('operations__tab--active');
 
