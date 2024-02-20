@@ -97,10 +97,30 @@ const tabsContainer = document.querySelector('.operations__tab-container');
 const tabsContent = document.querySelectorAll('.operations__content');
 
 //using event delegation (selecting the parent element of the buttons)
-tabsContainer.addEventListener('click', function(e) {
+tabsContainer.addEventListener('click', function (e) {
   e.preventDefault();
-  const clicked = e.target;
-})
+
+  //Matching Strategy
+  const clicked = e.target.closest('.operations__tab'); // the closest method is used to get the closest element that has a specific .class name
+  console.log(clicked);
+
+  // A guard clause (an if statement that returns early if some condition is matched)
+  if (!clicked) return; // to prevent errors
+
+  // First remove the active class from all buttons and the content areas
+  tabs.forEach(function (t) {
+    // Removes the active tab from other buttons
+    t.classList.remove('operations__tab--active');
+  });
+  tabsContent.forEach(c => c.classList.remove('operations__content--active'))
+  // and adding the active class on the button that's currently clicked
+  clicked.classList.add('operations__tab--active');
+
+  // Revealing the content area itself
+  document
+    .querySelector(`.operations__content--${clicked.dataset.tab}`)
+    .classList.add('operations__content--active'); //(using the dataset.tab because of the data-tab attribute used in the HTML)
+});
 ////////////////////////
 //Selecting Element
 /*
