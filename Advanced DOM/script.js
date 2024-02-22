@@ -128,12 +128,12 @@ tabsContainer.addEventListener('click', function (e) {
 
 // Menu fade animation
 const handleHover = function (e, opacity) {
-  if (e.target.classList.contains('nav__link')) {
-    const link = e.target;
-    const siblings = link.closest('.nav').querySelectorAll('.nav__link'); //the closest method selects the siblings of the element hovered on, meaning the element closest to the nav element
-    // const logo = document.querySelector('.nav__logo');
-    const logo = link.closest('.nav').querySelector('img'); // selects element closest to the nav element with an image tagg
+  const link = e.target;
+  const siblings = link.closest('.nav').querySelectorAll('.nav__link'); //the closest method selects the siblings of the element hovered on, meaning the element closest to the nav element
+  // const logo = document.querySelector('.nav__logo');
+  const logo = link.closest('.nav').querySelector('img'); // selects element closest to the nav element with an image tag
 
+  if (link.classList.contains('nav__link')) {
     siblings.forEach(function (el) {
       if (el !== link) {
         el.style.opacity = opacity;
@@ -145,12 +145,24 @@ const handleHover = function (e, opacity) {
 
 // Passing arguements into an event handler
 nav.addEventListener('mouseover', function (e) {
-  handleHover(e, 0.5)
+  handleHover(e, 0.5);
 });
 
 nav.addEventListener('mouseout', function (e) {
-  handleHover(e, 1)
+  handleHover(e, 1);
 });
+
+// Implementing Sticky Navigation: The Scroll Event
+const initialCoords = section1.getBoundingClientRect();
+window.addEventListener('scroll', function (e) {
+  // console.log(initialCoords);
+  if (this.scrollY > initialCoords.top) {
+    nav.classList.add('sticky');
+  } else {
+    nav.classList.remove('sticky');
+  }
+});
+
 ////////////////////////
 //Selecting Element
 /*
