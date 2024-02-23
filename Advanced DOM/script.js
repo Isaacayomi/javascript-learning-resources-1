@@ -163,6 +163,9 @@ window.addEventListener('scroll', function (e) {
   }
 });
 
+// Implementing Sticky Navigation: Intersection Observer API
+
+
 ////////////////////////
 //Selecting Element
 /*
