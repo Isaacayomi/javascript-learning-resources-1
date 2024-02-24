@@ -153,6 +153,7 @@ nav.addEventListener('mouseout', function (e) {
 });
 
 // Implementing Sticky Navigation: The Scroll Event
+/*
 const initialCoords = section1.getBoundingClientRect();
 window.addEventListener('scroll', function (e) {
   // console.log(initialCoords);
@@ -161,10 +162,43 @@ window.addEventListener('scroll', function (e) {
   } else {
     nav.classList.remove('sticky');
   }
-});
+}); */
 
 // Implementing Sticky Navigation: Intersection Observer API
+// The below callback will get called each time the observed element(target element) is intersecting the root element at the threshold defined in percentage(0.1)
+// const obsCallBack = function (entries, observer) {
+//   entries.forEach(entry => {
+//     console.log(entry);
+//   });
+// };
 
+// const obsOptions = {
+//   root: null,
+//   // threshold: 0.1, or
+//   threshold: [0, 0.2], // the 0% means, our callback will trigger each time the target element move completely out of the view, and also as it enters the view:port or
+//   //threshold: [0, 1, 0.2] // the 1% means, the callback will be triggered when the target element move 100% into the view
+// };
+// const observer = new IntersectionObserver(obsCallBack, obsOptions); // the intersection API
+// observer.observe(section1); // the observed element
+
+// Implementing the sticky scroll using the intesection observer API
+const header = document.querySelector('.header');
+const stickyNav = function (entries) {
+  entries.forEach(entry => {
+    console.log(entry);
+    if (!entry.isIntersecting) {
+      nav.classList.add('sticky');
+    } else {
+      nav.classList.remove('sticky');
+    }
+  });
+ 
+};
+const headerObserver = new IntersectionObserver(stickyNav, {
+  root: null,
+  threshold: 0, // meaning once 0% of the header is visible (once the header is no longer visible), we want something to happen
+});
+headerObserver.observe(header);
 
 ////////////////////////
 //Selecting Element
