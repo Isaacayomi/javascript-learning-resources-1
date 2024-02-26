@@ -192,11 +192,11 @@ const stickyNav = function (entries) {
       nav.classList.remove('sticky');
     }
   });
- 
 };
 const headerObserver = new IntersectionObserver(stickyNav, {
   root: null,
   threshold: 0, // meaning once 0% of the header is visible (once the header is no longer visible), we want something to happen
+  rootMargin: '90px',
 });
 headerObserver.observe(header);
 
