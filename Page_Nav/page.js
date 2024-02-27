@@ -41,9 +41,10 @@ window.addEventListener("scroll", function (e) {
 }); */
 
 // Implementing Sticky Navigation: THE INTERSECTION OBSERVER API
+const navHeight = navContainer.getBoundingClientRect().height; //to get the height of the nav container
 const stickyNav = function (entries) {
   entries.forEach((entry) => {
-    console.log(entry);
+    // console.log(entry);
 
     if (!entry.isIntersecting) {
       navContainer.classList.add("sticky");
@@ -56,8 +57,33 @@ const stickyNav = function (entries) {
 const stickyOptions = {
   root: null,
   threshold: 0,
-  rootMargin: '-25px',
+  rootMargin: `-${navHeight}px`,
 };
 
 const observer = new IntersectionObserver(stickyNav, stickyOptions);
 observer.observe(headerSection); //observes the header section to see if it's no longer in the viewport
+
+// Implementing Reveal on Scroll
+const allSections = document.querySelectorAll("section");
+console.log(allSections);
+
+const revealCallback = function (entries, observer) {
+  const [entry] = entries;
+  console.log(entry);
+
+  if (entry.isIntersecting) {
+    entry.target.classList.remove("section__hidden");
+  }
+};
+
+const revealOptions = {
+  root: null,
+  threshold: 0.15,
+};
+
+const sectionObserver = new IntersectionObserver(revealCallback, revealOptions);
+
+allSections.forEach((section) => {
+  sectionObserver.observe(section);
+  section.classList.add("section__hidden");
+});
