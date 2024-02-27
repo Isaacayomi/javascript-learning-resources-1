@@ -250,6 +250,8 @@ const imgObserver = new IntersectionObserver(loading, {
 });
 imgTarget.forEach(img => imgObserver.observe(img));
 
+// Building a Slider Component
+
 ////////////////////////
 //Selecting Element
 /*
