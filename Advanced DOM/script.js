@@ -207,13 +207,13 @@ const allSections = document.querySelectorAll('.section'); // Selects the entire
 
 const revealSection = function (entries, observer) {
   const [entry] = entries;
-  console.log(entry);
+  // console.log(entry);
 
   if (entry.isIntersecting) {
     entry.target.classList.remove('section--hidden');
   }
 
-  observer.unobserve(entry.target); // removes the observer after scrolling through all the section
+  // observer.unobserve(entry.target); // removes the observer after scrolling through all the section
 }; // Observer callback
 
 const revealOptions = {
@@ -227,6 +227,26 @@ allSections.forEach(function (section) {
   sectionObserver.observe(section);
   section.classList.add('section--hidden');
 });
+
+// Lazy Loading Images
+const imgTarget = document.querySelectorAll('img[data-src]'); // Selects all the images which have the property of data source (original image) (HTML line: 72);
+
+const loading = function (entries, observer) {
+  const [entry] = entries;
+  // console.log(entry);
+
+  if (entry.isIntersecting) {
+    // Replace the src attribute with the data-src (original image)
+    entry.target.src = entry.target.dataset.src;
+    entry.target.classList.remove('lazy-img');
+  }
+};
+
+const imgObserver = new IntersectionObserver(loading, {
+  root: null,
+  threshold: 0,
+});
+imgTarget.forEach(img => imgObserver.observe(img));
 
 ////////////////////////
 //Selecting Element
