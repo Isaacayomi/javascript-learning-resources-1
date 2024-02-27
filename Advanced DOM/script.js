@@ -212,6 +212,8 @@ const revealSection = function (entries, observer) {
   if (entry.isIntersecting) {
     entry.target.classList.remove('section--hidden');
   }
+
+  observer.unobserve(entry.target); // removes the observer after scrolling through all the section
 }; // Observer callback
 
 const revealOptions = {

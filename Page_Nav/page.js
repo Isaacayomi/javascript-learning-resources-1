@@ -74,6 +74,7 @@ const revealCallback = function (entries, observer) {
   if (entry.isIntersecting) {
     entry.target.classList.remove("section__hidden");
   }
+  
 };
 
 const revealOptions = {
