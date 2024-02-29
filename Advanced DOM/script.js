@@ -256,7 +256,7 @@ const btnLeft = document.querySelector('.slider__btn--left');
 const btnRight = document.querySelector('.slider__btn--right');
 const slider = document.querySelector('.slider');
 let curSlide = 0;
-let maxSlide = slides.length-1;
+let maxSlide = slides.length - 1;
 
 slider.style.transform = `scale(0.4) translateX(-800px)`;
 slider.style.overflow = `visible`;
@@ -266,20 +266,34 @@ slides.forEach(function (slide, i) {
 });
 
 // 0%, 100%, 200%, 300%
+const goToSlide = function (curImg) {
+  slides.forEach(function (slide, i) {
+    slide.style.transform = `translateX(${100 * (i - curImg)}%)`;
+  });
+};
 
-btnRight.addEventListener('click', function () {
+const nextSlide = function () {
   if (curSlide === maxSlide) {
     curSlide = 0;
   } else {
     curSlide++;
   }
 
-  slides.forEach(function (slide, i) {
-    slide.style.transform = `translateX(${100 * (i - curSlide)}%)`;
-  });
-  //-100, 0, 100, 200
-});
+  goToSlide(curSlide);
+};
 
+const prevSlide = function () {
+  if (curSlide === 0) {
+    curSlide = maxSlide;
+  } else {
+    curSlide--;
+  }
+
+  goToSlide(curSlide);
+};
+
+btnRight.addEventListener('click', nextSlide);
+btnLeft.addEventListener('click', prevSlide);
 
 ////////////////////////
 //Selecting Element
