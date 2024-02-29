@@ -225,13 +225,13 @@ const sectionObserver = new IntersectionObserver(revealSection, revealOptions); 
 // Loop over and observe each section
 allSections.forEach(function (section) {
   sectionObserver.observe(section);
-  section.classList.add('section--hidden');
+  // section.classList.add('section--hidden');
 });
 
 // Lazy Loading Images
 const imgTarget = document.querySelectorAll('img[data-src]'); // Selects all the images which have the property of data source (original image) (HTML line: 72);
 
-const loading = function (entries, observer) {
+const lazyLoading = function (entries, observer) {
   const [entry] = entries;
   // console.log(entry);
 
@@ -244,13 +244,42 @@ const loading = function (entries, observer) {
   }
 };
 
-const imgObserver = new IntersectionObserver(loading, {
+const imgObserver = new IntersectionObserver(lazyLoading, {
   root: null,
   threshold: 0.9,
 });
 imgTarget.forEach(img => imgObserver.observe(img));
 
 // Building a Slider Component
+const slides = document.querySelectorAll('.slide');
+const btnLeft = document.querySelector('.slider__btn--left');
+const btnRight = document.querySelector('.slider__btn--right');
+const slider = document.querySelector('.slider');
+let curSlide = 0;
+let maxSlide = slides.length-1;
+
+slider.style.transform = `scale(0.4) translateX(-800px)`;
+slider.style.overflow = `visible`;
+
+slides.forEach(function (slide, i) {
+  slide.style.transform = `translateX(${100 * i}%)`;
+});
+
+// 0%, 100%, 200%, 300%
+
+btnRight.addEventListener('click', function () {
+  if (curSlide === maxSlide) {
+    curSlide = 0;
+  } else {
+    curSlide++;
+  }
+
+  slides.forEach(function (slide, i) {
+    slide.style.transform = `translateX(${100 * (i - curSlide)}%)`;
+  });
+  //-100, 0, 100, 200
+});
+
 
 ////////////////////////
 //Selecting Element
