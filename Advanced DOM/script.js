@@ -295,6 +295,14 @@ const prevSlide = function () {
 btnRight.addEventListener('click', nextSlide);
 btnLeft.addEventListener('click', prevSlide);
 
+// Making the slide respond to a keyboard event
+document.addEventListener('keydown', function (e) {
+  console.log(e);
+
+  if (e.key === 'ArrowRight') nextSlide();
+  if (e.key === 'ArrowLeft') prevSlide();
+});
+
 ////////////////////////
 //Selecting Element
 /*
