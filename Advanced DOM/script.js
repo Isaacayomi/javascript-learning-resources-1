@@ -255,11 +255,20 @@ const slides = document.querySelectorAll('.slide');
 const btnLeft = document.querySelector('.slider__btn--left');
 const btnRight = document.querySelector('.slider__btn--right');
 const slider = document.querySelector('.slider');
+const dotContainer = document.querySelector('.dots');
 let curSlide = 0;
 let maxSlide = slides.length - 1;
 
-slider.style.transform = `scale(0.4) translateX(-800px)`;
-slider.style.overflow = `visible`;
+// Implementing the dot feature
+const createDots = function () {
+  slides.forEach(function (_, i) {
+    dotContainer.insertAdjacentHTML(
+      'beforeend',
+      `<button class="dots__dot" data-slide="${i}"> </button>`
+    );
+  });
+};
+createDots();
 
 slides.forEach(function (slide, i) {
   slide.style.transform = `translateX(${100 * i}%)`;
@@ -303,6 +312,14 @@ document.addEventListener('keydown', function (e) {
   if (e.key === 'ArrowLeft') prevSlide();
 });
 
+// Dots feature (2)
+
+dotContainer.addEventListener('click', function (e) {
+  if (e.target.classList.contains('dots__dot')) {
+    const slide = e.target.dataset.slide;
+    goToSlide(slide);
+  }
+});
 ////////////////////////
 //Selecting Element
 /*

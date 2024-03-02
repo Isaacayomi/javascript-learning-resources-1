@@ -6,19 +6,14 @@ let curSlide = 0;
 let maxSlide = slides.length - 1;
 slider.style.overflow = "hidden";
 
+slides.forEach(function (slide, i) {
+  slide.style.transform = `translateX(${100 * i}%)`;
+});
+
 const goTo = function () {
   slides.forEach(function (s, i) {
     s.style.transform = `translateX(${100 * (i - curSlide)}%)`;
   });
-};
-
-const prevSlide = function () {
-  if (curSlide === 0) {
-    curSlide = maxSlide;
-  } else {
-    curSlide--;
-  }
-  goTo();
 };
 
 const nextSlide = function () {
@@ -31,9 +26,14 @@ const nextSlide = function () {
   goTo();
 };
 
-slides.forEach(function (slide, i) {
-  slide.style.transform = `translateX(${100 * i}%)`;
-});
+const prevSlide = function () {
+  if (curSlide === 0) {
+    curSlide = maxSlide;
+  } else {
+    curSlide--;
+  }
+  goTo();
+};
 
 rightBtn.addEventListener("click", nextSlide);
 
