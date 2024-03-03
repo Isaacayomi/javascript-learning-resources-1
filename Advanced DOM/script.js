@@ -280,6 +280,23 @@ const activateDot = function (slide) {
     .classList.add('dots__dot--active');
 };
 
+/*nextSlide():
+
+Purpose: Advances to the next slide.
+Steps:
+Checks if the current slide is already the last one (curSlide === maxSlide):
+If so, resets to the first slide (curSlide = 0).
+Otherwise, increments the current slide index (curSlide++).
+Calls goTo() to update slide positions.
+prevSlide():
+
+Purpose: Reverts to the previous slide.
+Steps:
+Checks if the current slide is already the first one (curSlide === 0):
+If so, jumps to the last slide (curSlide = maxSlide).
+Otherwise, decrements the current slide index (curSlide--).
+Calls goTo() to update slide positions */
+
 slides.forEach(function (slide, i) {
   slide.style.transform = `translateX(${100 * i}%)`;
 });
