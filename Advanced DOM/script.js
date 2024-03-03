@@ -332,6 +332,11 @@ dotContainer.addEventListener('click', function (e) {
     activateDot(slide);
   }
 });
+
+// DOM Content Loaded
+document.addEventListener('DOMContentLoaded', function (e) {
+  console.log(`HTML parsed and DOM tree built`, e);
+});
 ////////////////////////
 //Selecting Element
 /*
