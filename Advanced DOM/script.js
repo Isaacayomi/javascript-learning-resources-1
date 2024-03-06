@@ -41,13 +41,13 @@ document.addEventListener('down', function (e) {
 btnScrollTo.addEventListener('click', function (e) {
   // Getting the coordinates of the elements to scroll to
   const s1coords = section1.getBoundingClientRect();
-  console.log(s1coords);
+  // console.log(s1coords);
 
   // Getting the coordinates of the button clicked (btnScrollTo)
-  console.log(e.target.getBoundingClientRect());
+  // console.log(e.target.getBoundingClientRect());
 
   // Getting the current scroll positon (X/Y positions)
-  console.log('Current scroll [x/y]', window.pageXOffset, window.pageYOffset);
+  // console.log('Current scroll [x/y]', window.pageXOffset, window.pageYOffset);
 
   // Scrolling
   // window.scrollTo(
@@ -73,7 +73,7 @@ document.querySelectorAll('.nav__link').forEach(el =>
     e.preventDefault(); // Prevents the page from scrolling to the HTML element which has the ID name as the anchor tag
 
     const id = this.getAttribute('href'); // to get the absolute url which is the (id = 'section--1')
-    console.log(id);
+    // console.log(id);
     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
   })
 ); */
@@ -85,11 +85,11 @@ document.querySelectorAll('.nav__link').forEach(el =>
 // the parent element of the links
 document.querySelector('.nav__links').addEventListener('click', function (e) {
   e.preventDefault();
-  console.log(e.target); // selects the element (the exact link) that is clicked in the parent element (nav container)
+  // console.log(e.target); // selects the element (the exact link) that is clicked in the parent element (nav container)
 
   // Matching Strategy
   if (e.target.classList.contains('nav__link')) {
-    console.log('LINK');
+    // console.log('LINK');
     const id = e.target.getAttribute('href');
     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
   }
@@ -335,7 +335,7 @@ btnLeft.addEventListener('click', prevSlide);
 
 // Making the slide respond to a keyboard event
 document.addEventListener('keydown', function (e) {
-  console.log(e);
+  // console.log(e);
 
   if (e.key === 'ArrowRight') nextSlide();
   if (e.key === 'ArrowLeft') prevSlide();
@@ -352,8 +352,19 @@ dotContainer.addEventListener('click', function (e) {
 
 // DOM Content Loaded
 document.addEventListener('DOMContentLoaded', function (e) {
-  console.log(`HTML parsed and DOM tree built`, e);
+  console.log(e);
 });
+
+//The Load Event: Fired by the window; This event gets fired when all the html and the css is loaded completely
+window.addEventListener('load', function (e) {
+  console.log('Page fully loaded:', e);
+});
+
+// window.addEventListener('beforeunload', function (e) {
+//   e.preventDefault()
+//   console.log(e);
+//   e.returnValue = '';
+// });
 ////////////////////////
 //Selecting Element
 /*
