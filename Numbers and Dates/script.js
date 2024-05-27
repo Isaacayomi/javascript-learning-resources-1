@@ -516,12 +516,12 @@ setTimeout(
 
 console.log("Waiting...");
 
-setTimeout(
-  (boy, girl) => console.log(`${boy} is the boy and ${girl} is the girl`),
-  4000,
-  "Prime",
-  "Mercy"
-); */
+  setTimeout(
+    (boy, girl) => console.log(`${boy} is the boy and ${girl} is the girl`),
+    4000,
+    "Prime",
+    "Mercy"
+  ); */
 
 /*
 //Another way to use arguements with the settimeout function by using the spread operator
@@ -542,10 +542,10 @@ if (ingredients.includes("spinach")) {
 */
 
 //creating a clock with the setInterval function
-setInterval(function () {
-  const now = new Date();
-  console.log(`${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`);
-}, 1000);
+// setInterval(function () {
+//   const now = new Date();
+//   console.log(`${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`);
+// }, 1000);
 
 
 // Practicing more on set intervals (counts from one to 100)
