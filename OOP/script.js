@@ -37,4 +37,8 @@ Person.prototype.calcAge = function () {
   console.log(2024 - this.birthYear);
 };
 
-Isaac.calcAge();
+console.log(Isaac.__proto__.__proto__);
+
+// Prototype chains on built in objects like arrays
+const arr = [3, 4, 5, 6, 7, 9];
+console.log(arr.__proto__ === Array.prototype);
