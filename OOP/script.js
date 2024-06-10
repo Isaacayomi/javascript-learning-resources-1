@@ -39,15 +39,19 @@ const matilda = new Person("Maltida", 2017);
 Person.prototype.calcAge = function () {
   console.log(2024 - this.birthYear);
 };
+matilda.calcAge()
 
-console.log(Isaac.__proto__.__proto__);
+//two ways to check if an object is tbe prototype of a particular constructor
+console.log(Isaac.__proto__ === Person.prototype);
+console.log(Person.prototype.isPrototypeOf(Isaac))
+
+// we can also set properties on prototypes.
+Person.prototype.gender = 'Male';
+console.log(Isaac, matilda);
 
 // Prototype chains on built in objects like arrays
 const arr = [3, 4, 5, 6, 7, 9];
 console.log(arr.__proto__ === Array.prototype);
 
-// testing!!!!!!!!
-
-// Revising Constructor function
 
 
