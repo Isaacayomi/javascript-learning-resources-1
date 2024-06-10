@@ -31,7 +31,10 @@ const matilda = new Person("Maltida", 2017);
 // console.log(matilda);
 // console.log(jack);
 
-// PROTOTYPES
+//test whether an object is an instance of a particular class, returns true or false
+// console.log(matilda instanceof Person)
+
+// PROTOTYPES.
 // Each and every function in javascript automatically has a property called prototype, and that includes constructor functions. Instead of adding methods directly in to the constructor function, we use prototypes.
 Person.prototype.calcAge = function () {
   console.log(2024 - this.birthYear);
@@ -44,3 +47,7 @@ const arr = [3, 4, 5, 6, 7, 9];
 console.log(arr.__proto__ === Array.prototype);
 
 // testing!!!!!!!!
+
+// Revising Constructor function
+
+
