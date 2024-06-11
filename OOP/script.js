@@ -81,3 +81,23 @@ Car.prototype.brake = function () {
  
  mercedes.accelerate()
  mercedes.brake()
+ 
+ // ES6 CLASSES
+ // creating a constructor function using CLASSES
+ class PersonCl{
+   constructor(firstName, birthYear) {
+     this.firstName = firstName
+     this.birthYear = birthYear
+   }
+   calcAge() {
+     console.log(2037 - this.birthYear)
+   }
+   
+   greet() {
+     console.log(`hey ${this.firstName}`)
+   }
+ }
+ const jessica = new PersonCl ('Jessica', 1990)
+ console.log(jessica)
+ jessica.calcAge()
+ jessica.greet()
