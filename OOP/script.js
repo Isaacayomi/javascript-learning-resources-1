@@ -42,7 +42,7 @@ Person.prototype.calcAge = function () {
 matilda.calcAge()
 
 //two ways to check if an object is tbe prototype of a particular constructor
-console.log(Isaac.__proto__ === Person.prototype);
+// console.log(Isaac.__proto__ === Person.prototype);
 console.log(Person.prototype.isPrototypeOf(Isaac))
 
 // we can also set properties on prototypes.
@@ -51,7 +51,12 @@ console.log(Isaac, matilda);
 
 // Prototype chains on built in objects like arrays
 const arr = [3, 4, 5, 6, 7, 9];
-console.log(arr.__proto__ === Array.prototype);
+// console.log(arr.__proto__ === Array.prototype);
 
+//Adding a new method to the prototype property of the array constructor
+Array.prototype.unique = function () {
+ return [...new Set(this)]
+}
+console.log(arr.unique())
 
 
