@@ -1,14 +1,17 @@
-'use strict'
+"use strict";
 //DEFAULT PARAMETERS
-const bookings = []
-const createBooking = function (flightNum = 'LH235', numPassengers = 4, price = 300 * numPassengers) {
-    /* ES5 way of doing stuff
+const bookings = [];
+const createBooking = function (
+  flightNum = "LH235",
+  numPassengers = 4,
+  price = 300 * numPassengers,
+) {
+  /* ES5 way of doing stuff
     numPassengers = numPassengers || 1 //Default value. Once the numPassengers is a falsy value, the result will be the value of the second operand
     price = price || 199;
     numPassengers = 1
 */
 };
-
 
 /*
 const booking = {
@@ -92,8 +95,6 @@ const str = 'isaac Prime'
 const [first, ...others] = str.split(' ');
 console.log([first[0].toUpperCase() + first.slice(1), ...others]) */
 
-
-
 //FUNCTIONS RETURNING FUNCTIONS
 /*
 const greet = function (greeting) {
@@ -108,7 +109,7 @@ greetings('Isaac')
 greet('Hi')('Ayomide')
 */
 //Rewriting the above function using arrow function (CHALLENGE)
-//Note: arrow functions doesn't basically need the curly braces and a return statement if it's just a single line of code 
+//Note: arrow functions doesn't basically need the curly braces and a return statement if it's just a single line of code
 /*
 const greet = greeting => {
     return name => {
@@ -226,43 +227,43 @@ document.querySelector('.btn').addEventListener('click', poll.registerNewAnswer.
 //IMMEDIATELY INVOKED FUNCTION EXPRESSIONS
 
 (function () {
-    console.log('this will never run again');
+  console.log("this will never run again");
 })();
 
 //Using the IIFE with an arrow function
-(() => console.log('This will run just once!'))();
+(() => console.log("This will run just once!"))();
 
 //CLOSURES
 const secureBooking = function () {
-    let passengerCount = 0;
+  let passengerCount = 0;
 
-    return function () {
-        passengerCount++;
-        console.log(`${passengerCount} passengers`)
-    }
-}
+  return function () {
+    passengerCount++;
+    console.log(`${passengerCount} passengers`);
+  };
+};
 
 const booker = secureBooking();
-booker()
-booker()
-booker()
+booker();
+booker();
+booker();
 
 //CLOSURES EXAMPLES
 let f;
 
 const g = function () {
-    const a = 23;
-    f = function () {
-        console.log(a * 2)
-    }
+  const a = 23;
+  f = function () {
+    console.log(a * 2);
+  };
 };
 
 const h = function () {
-    const b = 777;
-    f = function () {
-        console.log(b * 2)
-    }
-}
+  const b = 777;
+  f = function () {
+    console.log(b * 2);
+  };
+};
 
 g();
 f();
@@ -272,22 +273,22 @@ f();
 
 //EXAMPLE 2
 const boardPassengers = function (n, wait) {
-    const perGroup = n / 3;
-    setTimeout(function () {
-        console.log(`We are now boarding all ${n} passengers`);
-        console.log(`There are 3 groups, each with ${perGroup} passengers`)
-    }, wait * 1000)
+  const perGroup = n / 3;
+  setTimeout(function () {
+    console.log(`We are now boarding all ${n} passengers`);
+    console.log(`There are 3 groups, each with ${perGroup} passengers`);
+  }, wait * 1000);
 
-    console.log(`Will start boarding in ${wait} seconds`)
-}
+  console.log(`Will start boarding in ${wait} seconds`);
+};
 
 boardPassengers(180, 3);
 
 (function () {
-    const header = document.querySelector('h1');
-    header.style.color = 'red';
+  const header = document.querySelector("h1");
+  header.style.color = "red";
 
-    document.addEventListener('click', () => {
-        header.style.color = 'blue'
-    })
+  document.addEventListener("click", () => {
+    header.style.color = "blue";
+  });
 })();

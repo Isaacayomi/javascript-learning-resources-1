@@ -1,163 +1,160 @@
-'use strict';
+"use strict";
 
 const restaurant = {
-    names: 'Classica Italiano',
-    location: 'Via Angela Tavanti',
-    categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
-    starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread'],
-    mainMenu: ['Pizza', 'Pasta', 'cake'],
-    openingHours: {
-        thu: {
-            open: 12,
-            close: 22,
-        },
-        fri: {
-            open: 11,
-            close: 23,
-        },
-        sat: {
-            open: 0, //Open 24 hours
-            close: 24,
-        },
+  names: "Classica Italiano",
+  location: "Via Angela Tavanti",
+  categories: ["Italian", "Pizzeria", "Vegetarian", "Organic"],
+  starterMenu: ["Focaccia", "Bruschetta", "Garlic Bread"],
+  mainMenu: ["Pizza", "Pasta", "cake"],
+  openingHours: {
+    thu: {
+      open: 12,
+      close: 22,
     },
-
-    order: function (starterIndex, mainIndex) {
-        return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]]
+    fri: {
+      open: 11,
+      close: 23,
     },
+    sat: {
+      open: 0, //Open 24 hours
+      close: 24,
+    },
+  },
 
-    orderPasta: function (ing1, ing2, ing3) {
-        console.log(`Here's your delicious pasta, made with ${ing1}, ${ing2}, ${ing3}`)
-    }
+  order: function (starterIndex, mainIndex) {
+    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  },
 
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(
+      `Here's your delicious pasta, made with ${ing1}, ${ing2}, ${ing3}`,
+    );
+  },
 };
 
 //Optional chaining
-if (restaurant.openingHours && restaurant.openingHours.mon) console.log("Monday " + restaurant.openingHours.mon.open)
+if (restaurant.openingHours && restaurant.openingHours.mon)
+  console.log("Monday " + restaurant.openingHours.mon.open);
 
 //Withh optional chaining
-console.log(restaurant.openingHours.mon?.open);//restaurant.openingHours.mon ? means to check if the property mon is actually a child of openingHours, and also a child of restaurant, if it is, add .open
+console.log(restaurant.openingHours.mon?.open); //restaurant.openingHours.mon ? means to check if the property mon is actually a child of openingHours, and also a child of restaurant, if it is, add .open
 // console.log("friday " + restaurant.openingHours.fri?.open);
 
-
 const openingHours = {
-    thu: {
-        open: 12,
-        close: 22,
-    },
-    fri: {
-        open: 11,
-        close: 23,
-    },
-    sat: {
-        open: 0, //Open 24 hours
-        close: 24,
-    },
-}
+  thu: {
+    open: 12,
+    close: 22,
+  },
+  fri: {
+    open: 11,
+    close: 23,
+  },
+  sat: {
+    open: 0, //Open 24 hours
+    close: 24,
+  },
+};
 // console.log("hours" + openingHours)
 //Looping over property names (keys)
 for (const day of Object.keys(openingHours)) {
-    console.log(day)
+  console.log(day);
 }
 
-const properties = Object.keys(openingHours)
+const properties = Object.keys(openingHours);
 for (const day of properties) {
-    console.log(day)
+  console.log(day);
 }
 
 //Looping over the values
-const values = Object.values(openingHours)
-console.log(values)
+const values = Object.values(openingHours);
+console.log(values);
 
 //Looping over the entire objects
-const entries = Object.entries(openingHours)
+const entries = Object.entries(openingHours);
 // console.log(entries)
 
 for (const x of entries) {
-    console.log(x)
+  console.log(x);
 }
-
-
 
 //Short Circuiting (&& and ||)
 //In the case of the OR operator, short circuiting returns the first truthy value
 console.log(0 || 3);
-console.log('' || 'Jonas'); //Jonas
+console.log("" || "Jonas"); //Jonas
 console.log(true || 1); //true
 console.log(undefined || null); //null
 
 //In the case of the AND operator, short circuiting returns the first falsy value
-console.log(0 && 3)
-console.log("Isaac" && "Prime")
+console.log(0 && 3);
+console.log("Isaac" && "Prime");
 
 //Using the nullish coalescing operator(??), works with the idea of nullish values alone(null & undefined), meaning if the first value is NULL or UNDEFINED (NOT 0 OR FALSE OR ANY OTHER THING), the second value will be returned
 restaurant.numGuests = 12;
 const guestCorrect = restaurant.numGuests ?? 15;
-console.log(guestCorrect)
+console.log(guestCorrect);
 ///////////////////////////////////////
 // CODING CHALLENGE (1)
 
 const game = {
-    team1: 'Bayern Munich',
-    team2: 'Borrussia Dortmund',
-    players: [
-        [
-            'Neuer',
-            'Pavard',
-            'Martinez',
-            'Alaba',
-            'Davies',
-            'Kimmich',
-            'goretzka',
-            'Coman',
-            'Muller',
-            'Gnarby',
-            'Lewandowski',
-        ],
-        [
-            'Burki',
-            'Schulz',
-            'Hummels',
-            'Akanji',
-            'Hakimi',
-            'weigl',
-            'Weitsel',
-            'Hazard',
-            'Brandt',
-            'Sancho',
-            'Gotze',
-        ],
+  team1: "Bayern Munich",
+  team2: "Borrussia Dortmund",
+  players: [
+    [
+      "Neuer",
+      "Pavard",
+      "Martinez",
+      "Alaba",
+      "Davies",
+      "Kimmich",
+      "goretzka",
+      "Coman",
+      "Muller",
+      "Gnarby",
+      "Lewandowski",
     ],
-    score: '4:0',
-    scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
-    date: 'Nov 9th, 2037',
-    odds: {
-        team1: 1.33,
-        x: 3.25,
-        team2: 6.5
-    }
-}
+    [
+      "Burki",
+      "Schulz",
+      "Hummels",
+      "Akanji",
+      "Hakimi",
+      "weigl",
+      "Weitsel",
+      "Hazard",
+      "Brandt",
+      "Sancho",
+      "Gotze",
+    ],
+  ],
+  score: "4:0",
+  scored: ["Lewandowski", "Gnarby", "Lewandowski", "Hummels"],
+  date: "Nov 9th, 2037",
+  odds: {
+    team1: 1.33,
+    x: 3.25,
+    team2: 6.5,
+  },
+};
 
 //Looping Arrays (The For_Of Loop)
-const menu = [...restaurant.starterMenu, ...restaurant.mainMenu]
-console.log('New challenge!!')
-for (const item of menu) console.log(item)
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+console.log("New challenge!!");
+for (const item of menu) console.log(item);
 
-console.log('Challenge Ends!!')
+console.log("Challenge Ends!!");
 
 //Loops through the entire array
-const friends = ['Prime', 'Swift', 'Atom'];
-for (const list of friends) console.log(list)
+const friends = ["Prime", "Swift", "Atom"];
+for (const list of friends) console.log(list);
 
 //this provides each of the index of the array and the element itself, in an individual array
 for (const list of friends.entries()) {
-    console.log(list)
+  console.log(list);
 }
 
-console.log(...friends.entries())
+console.log(...friends.entries());
 
 // console.log(friends)
-
-
 
 //CODING CHALLENGE 2
 //1. Loop over the game.scored array and print each player name to the console, along with the goal number (Example: "Goal 1: Lewandowski")
@@ -171,26 +168,24 @@ console.log(...friends.entries())
 //Lewandowski: 2
 //}
 
-
-
 //1.
 const gameEntries = game.scored;
 for (const [score, player] of gameEntries.entries()) {
-    console.log(`Goal ${score + 1}: ${player}`)
+  console.log(`Goal ${score + 1}: ${player}`);
 }
 
-//2. 
+//2.
 let sum = 0;
 let ave = 0;
 
-let Values = Object.values(game.odds)
+let Values = Object.values(game.odds);
 for (const value of Values) {
-    console.log(value)
-    sum += value
+  console.log(value);
+  sum += value;
 }
-console.log(sum)
+console.log(sum);
 ave = sum / Values.length;
-console.log(ave)
+console.log(ave);
 
 //OR
 
@@ -202,13 +197,11 @@ console.log(ave)
 // ave = sum/Value.length;
 // console.log(ave)
 
-
-//3. 
+//3.
 for (const [team, odd] of Object.entries(game.odds)) {
-    const teamStr = team === 'x' ? 'Draw' : `victory ${game[team]}`
-    console.log(`Odd of ${teamStr} ${odd}`)
+  const teamStr = team === "x" ? "Draw" : `victory ${game[team]}`;
+  console.log(`Odd of ${teamStr} ${odd}`);
 }
-
 
 /////////////////////////////////
 /* CODING CHALLENGE 1
@@ -310,7 +303,6 @@ restaurant.orderPasta(ingredients[0], ingredients[1], ingredients[2])
 //Using the spread operator (the better solution)
 restaurant.orderPasta(...ingredients)
 */
-
 
 /*
 /////////////////////////////////////////////////////////

@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /*function logger() {
     console.log('My name is Isaac Prime')
@@ -191,7 +191,7 @@ console.log(fewNames);
  console.log(fewNames);
  */
 
-//CODING CHALLENGE 2 
+//CODING CHALLENGE 2
 /*
 const calcTips = function (bill) {
 
@@ -318,7 +318,6 @@ console.log(jonas.summary())
 //     fullName: 'John Smith',
 //     mass: 92,
 //     height: 1.95,
-
 
 //     calcBMI: function () {
 //         this.BMI = this.mass / this.height ** 2;
@@ -465,30 +464,13 @@ console.log(calcAverage(tips))
 */
 
 const measureKelvin = function () {
-    const measurement = {
-        type: 'tempe',
-        unit: 'celsius',
-        value: Number(prompt('Degrees celsius: '))
-    }
-    console.log10(measurement)
-    const kelvin = measurement.value + 274;
-    return kelvin
-}
-console.log(measureKelvin())
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  const measurement = {
+    type: "tempe",
+    unit: "celsius",
+    value: Number(prompt("Degrees celsius: ")),
+  };
+  console.log10(measurement);
+  const kelvin = measurement.value + 274;
+  return kelvin;
+};
+console.log(measureKelvin());

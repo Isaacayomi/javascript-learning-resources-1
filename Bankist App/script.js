@@ -196,7 +196,7 @@ btnTransfer.addEventListener('click', function (e) {
 
   const amount = Number(inputTransferAmount.value);
   const receiverAcct = accounts.find(
-    acc => acc.username === inputTransferTo.value
+    acc => acc.username === inputTransferTo.value,
   );
   inputTransferAmount.value = inputTransferTo.value = '';
   //the code below checks if the amount to be sent is greater than 0 and if the current account balance is greater or equal to the amount to be sent, and also check if the receiver account actually exists before sending to it, then lastly, checks if the receiver account username is not the same as the account receiving the money.
@@ -432,7 +432,7 @@ console.log(anyDeposit);
 console.log(
   account4.movements.every(function (mov) {
     return mov > 0;
-  })
+  }),
 );
 
 //Separating callback functions to make code DRY
@@ -520,19 +520,18 @@ console.log(zz);
 //Generating random dice rolls
 const diceRolls = Array.from(
   { length: 100 },
-  (_, i) => i + Math.floor(Math.random() * 6)
+  (_, i) => i + Math.floor(Math.random() * 6),
 );
 console.log(diceRolls);
 
 labelBalance.addEventListener('click', function () {
   const movementsUI = Array.from(
-    document.querySelectorAll('.movements__value')
+    document.querySelectorAll('.movements__value'),
   );
   console.log(movementsUI.map(el => el.textContent.replace('€', '')));
 });
 
 //FINAL TEST OF THIS SECTION
-
 
 // Coding Challenge #4
 
@@ -563,8 +562,6 @@ const dogs = [
 
 GOOD LUCK 😀
 */
-
-
 
 //TEST DATA
 const dogs = [
@@ -640,8 +637,10 @@ const checkEatingOkay = dog =>
 console.log(dogs.some(checkEatingOkay));
 
 //Task 7
-console.log(dogs.filter(checkEatingOkay))
+console.log(dogs.filter(checkEatingOkay));
 
 //Task 8 (sort in ascending order)
-const dogsCopy = dogs.slice().sort((a, b) => a.recommendedFood - b.recommendedFood);
-console.log(dogsCopy)
+const dogsCopy = dogs
+  .slice()
+  .sort((a, b) => a.recommendedFood - b.recommendedFood);
+console.log(dogsCopy);

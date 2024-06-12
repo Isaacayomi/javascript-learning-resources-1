@@ -39,14 +39,14 @@ const matilda = new Person("Maltida", 2017);
 Person.prototype.calcAge = function () {
   console.log(2024 - this.birthYear);
 };
-matilda.calcAge()
+matilda.calcAge();
 
 //two ways to check if an object is tbe prototype of a particular constructor
 // console.log(Isaac.__proto__ === Person.prototype);
-console.log(Person.prototype.isPrototypeOf(Isaac))
+console.log(Person.prototype.isPrototypeOf(Isaac));
 
 // we can also set properties on prototypes.
-Person.prototype.gender = 'Male';
+Person.prototype.gender = "Male";
 console.log(Isaac, matilda);
 
 // Prototype chains on built in objects like arrays
@@ -55,84 +55,132 @@ const arr = [3, 4, 5, 6, 7, 9];
 
 //Adding a new method to the prototype property of the array constructor
 Array.prototype.unique = function () {
- return [...new Set(this)]
-}
-console.log(arr.unique())
+  return [...new Set(this)];
+};
+console.log(arr.unique());
 
 //Coding challenge 1
-const Car = function (make, speed) {
-  this.make = make
-  this.speed = speed
+// const Car = function (make, speed) {
+//   this.make = make
+//   this.speed = speed
+// }
+// Car.prototype.accelerate = function () {
+//   this.speed += 10
+//   console.log(`${this.make} is going at ${this.speed} km/hr`)
+// }
+
+// Car.prototype.brake = function () {
+//   this.speed -= 5
+//   console.log(`${this.make} is going at ${this.speed} km/hr`)
+// }
+// const  BMW = new Car('BMW', 120)
+// const mercedes = new Car('Mercedes', 95)
+// console.log(BMW, mercedes)
+// BMW.accelerate()
+// BMW.brake()
+
+// mercedes.accelerate()
+// mercedes.brake()
+
+// ES6 CLASSES
+// creating a constructor function using CLASSES
+class PersonCl {
+  constructor(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  }
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  }
+
+  greet() {
+    console.log(`hey ${this.firstName}`);
+  }
 }
-Car.prototype.accelerate = function () {
-  this.speed += 10
-  console.log(`${this.make} is going at ${this.speed} km/hr`)
+const jessica = new PersonCl("Jessica", 1990);
+console.log(jessica);
+jessica.calcAge();
+jessica.greet();
+
+// Setters and Getters
+// Using the getter property to get the last value in an Array
+const account = {
+  name: "Jonas",
+  movements: [20, 40, 90, 100, 230],
+
+  get lastMove() {
+    return this.movements.slice(-1).pop();
+  },
+};
+console.log(account.lastMove);
+
+// using tbe Setters
+const account2 = {
+  name: "Prime",
+  movements: [20, 30, 90, 100, 450],
+  set lastMove(move) {
+    this.movements.push(move);
+  },
+};
+account2.lastMove = 1020;
+console.log(account2.movements);
+
+//Object.create method
+const PersonProto = {
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  },
+
+  init(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  },
+};
+const stephen = Object.create(PersonProto);
+stephen.name = "Stephen";
+stephen.birthYear = 2003;
+
+stephen.calcAge();
+
+const sarah = Object.create(PersonProto);
+sarah.init("sarah", 1990);
+
+//Coding challenge 2
+class Car {
+  constructor(make, speed) {
+    this.make = make;
+    this.speed = speed;
+  }
+  accelerate() {
+    this.speed += 10;
+    console.log(`${this.make} is going at ${this.speed} km/hr`);
+  }
+  brake() {
+    this.speed -= 5;
+    console.log(`${this.make} is going at ${this.speed} km/hr`);
+  }
+  
+  get speedUs() {
+     return(`${this.make} is going at ${this.speed/=1.6} mi/hr`);
+  }
+  
+  set speedUs(speed) {
+    this.speed = speed * 1.6
+  }
 }
 
-Car.prototype.brake = function () {
-  this.speed -= 5
-  console.log(`${this.make} is going at ${this.speed} km/hr`)
-}
- const  BMW = new Car('BMW', 120)
- const mercedes = new Car('Mercedes', 95)
- console.log(BMW, mercedes)
- BMW.accelerate()
- BMW.brake()
- 
- mercedes.accelerate()
- mercedes.brake()
- 
- // ES6 CLASSES
- // creating a constructor function using CLASSES
- class PersonCl{
-   constructor(firstName, birthYear) {
-     this.firstName = firstName
-     this.birthYear = birthYear
-   }
-   calcAge() {
-     console.log(2037 - this.birthYear)
-   }
-   
-   greet() {
-     console.log(`hey ${this.firstName}`)
-   }
- }
- const jessica = new PersonCl ('Jessica', 1990)
- console.log(jessica)
- jessica.calcAge()
- jessica.greet()
- 
- // Setters and Getters
- // Using the getter property to get the last value in an Array
- const account = {
-   name : 'Jonas',
-   movements : [20, 40, 90, 100, 230],
-   
-   get lastMove() {
-     return this.movements.slice(-1).pop();
-   }
- }
- console.log(account.lastMove)
- 
- // using tbe Setters
- const account2 = {
-   name : "Prime",
-   movements : [20, 30, 90, 100, 450],
-   set lastMove(move) {
-     this.movements.push(move);
-   }
- }
- account2.lastMove = 1020;
- console.log(account2.movements)
- 
- //Object.create method
- const PersonProto = {
-   calcAge() {
-     console.log(2037 - this.birthYear)
-   }
- }
- const stephen = Object.create(PersonProto)
- stephen.name = "Stephen"
- stephen.birthYear = 2003
- 
- stephen.calcAge()
+const BMW = new Car("BMW", 120);
+const mercedes = new Car("Mercedes", 95);
+console.log(BMW, mercedes);
+BMW.accelerate();
+BMW.brake();
+
+const ford = new Car("Ford", 120)
+console.log(ford.speedUs)
+
+ford.speedUs = 75
+console.log(ford)
+
+
+mercedes.accelerate();
+mercedes.brake();

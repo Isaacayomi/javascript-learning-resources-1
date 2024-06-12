@@ -30,7 +30,6 @@ const markHigherBMI = markBMI > johnBMI
 console.log(markBMI, johnBMI, markHigherBMI)
 */
 
-
 /*const firstName = 'Isaac';
 const job = 'Software Developer';
 const age = 20;
@@ -235,4 +234,3 @@ billValue >= 50 && billValue <= 300 ?
 totalBill = billValue + tip;
 console.log(`The bill was ${billValue}, the tip was ${tip}, and the total value ${totalBill}`);
 */
-

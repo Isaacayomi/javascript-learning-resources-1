@@ -125,8 +125,8 @@ const displayMovements = function (acc, sort = false) {
     const html = `
       <div class="movements__row">
         <div class="movements__type movements__type--${type}">${
-      i + 1
-    } ${type}</div>
+          i + 1
+        } ${type}</div>
     <div class="movements__date">${displayDate}</div>
         <div class="movements__value">${formattedMov}</div>
       </div>
@@ -164,7 +164,7 @@ const calcDisplaySummary = function (acc) {
   labelSumInterest.textContent = formatCur(
     acc.balance,
     acc.locale,
-    acc.currency
+    acc.currency,
   );
 };
 
@@ -227,7 +227,7 @@ btnLogin.addEventListener("click", function (e) {
   e.preventDefault();
 
   currentAccount = accounts.find(
-    (acc) => acc.username === inputLoginUsername.value
+    (acc) => acc.username === inputLoginUsername.value,
   );
   console.log(currentAccount);
 
@@ -255,7 +255,7 @@ btnLogin.addEventListener("click", function (e) {
     // console.log(locale);
     labelDate.textContent = new Intl.DateTimeFormat(
       currentAccount.locale,
-      options
+      options,
     ).format(current);
 
     // const currentDay = `${current.getDate()}`.padStart(2, 0);
@@ -283,7 +283,7 @@ btnTransfer.addEventListener("click", function (e) {
   e.preventDefault();
   const amount = +inputTransferAmount.value;
   const receiverAcc = accounts.find(
-    (acc) => acc.username === inputTransferTo.value
+    (acc) => acc.username === inputTransferTo.value,
   );
   inputTransferAmount.value = inputTransferTo.value = "";
 
@@ -346,7 +346,7 @@ btnClose.addEventListener("click", function (e) {
     +inputClosePin.value === currentAccount.pin
   ) {
     const index = accounts.findIndex(
-      (acc) => acc.username === currentAccount.username
+      (acc) => acc.username === currentAccount.username,
     );
     console.log(index);
     // .indexOf(23)
@@ -497,7 +497,7 @@ const num = 2312234235.25;
 console.log("US", new Intl.NumberFormat("en-US", options).format(num)); //formats numbers based on the country format
 console.log(
   "GERMANY:       ",
-  new Intl.NumberFormat("de-DE", options).format(num)
+  new Intl.NumberFormat("de-DE", options).format(num),
 );
 
 //TIMER: SETTIMEOUT & SET INTERVAL
@@ -546,7 +546,6 @@ if (ingredients.includes("spinach")) {
 //   const now = new Date();
 //   console.log(`${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`);
 // }, 1000);
-
 
 // Practicing more on set intervals (counts from one to 100)
 // let time = 0;
