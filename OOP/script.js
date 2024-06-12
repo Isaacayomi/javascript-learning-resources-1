@@ -124,3 +124,15 @@ Car.prototype.brake = function () {
  }
  account2.lastMove = 1020;
  console.log(account2.movements)
+ 
+ //Object.create method
+ const PersonProto = {
+   calcAge() {
+     console.log(2037 - this.birthYear)
+   }
+ }
+ const stephen = Object.create(PersonProto)
+ stephen.name = "Stephen"
+ stephen.birthYear = 2003
+ 
+ stephen.calcAge()
