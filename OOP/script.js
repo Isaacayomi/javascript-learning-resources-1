@@ -101,3 +101,26 @@ Car.prototype.brake = function () {
  console.log(jessica)
  jessica.calcAge()
  jessica.greet()
+ 
+ // Setters and Getters
+ // Using the getter property to get the last value in an Array
+ const account = {
+   name : 'Jonas',
+   movements : [20, 40, 90, 100, 230],
+   
+   get lastMove() {
+     return this.movements.slice(-1).pop();
+   }
+ }
+ console.log(account.lastMove)
+ 
+ // using tbe Setters
+ const account2 = {
+   name : "Prime",
+   movements : [20, 30, 90, 100, 450],
+   set lastMove(move) {
+     this.movements.push(move);
+   }
+ }
+ account2.lastMove = 1020;
+ console.log(account2.movements)
