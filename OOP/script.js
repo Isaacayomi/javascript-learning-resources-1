@@ -159,13 +159,13 @@ class Car {
     this.speed -= 5;
     console.log(`${this.make} is going at ${this.speed} km/hr`);
   }
-  
+
   get speedUs() {
-     return(`${this.make} is going at ${this.speed/=1.6} mi/hr`);
+    return `${this.make} is going at ${(this.speed /= 1.6)} mi/hr`;
   }
-  
+
   set speedUs(speed) {
-    this.speed = speed * 1.6
+    this.speed = speed * 1.6;
   }
 }
 
@@ -175,12 +175,11 @@ console.log(BMW, mercedes);
 BMW.accelerate();
 BMW.brake();
 
-const ford = new Car("Ford", 120)
-console.log(ford.speedUs)
+const ford = new Car("Ford", 120);
+console.log(ford.speedUs);
 
-ford.speedUs = 75
-console.log(ford)
-
+ford.speedUs = 75;
+console.log(ford);
 
 mercedes.accelerate();
 mercedes.brake();
