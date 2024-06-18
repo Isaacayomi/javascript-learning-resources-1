@@ -200,6 +200,7 @@ const Student = function (firstName, birthYear, course) {
   this.course = course
 }
 
+// Linking parent prototype with the child prototype
 Student.prototype = Object.create(Personn.prototype)
 
 Student.prototype.introduce = function () {
@@ -210,3 +211,34 @@ const mike = new Student ("Mike", 2002, 'Computer Sciencce')
 console.log(mike)
 mike.introduce()
 mike.calcAge()
+
+// Coding challenge 3
+const Carr = function (make, speed) {
+   this.make = make
+this.speed = speed
+ }
+ 
+ const EV = function (make, speed, charge) {
+   Carr.call(this, make, speed);
+   this.charge = `${charge}`
+ }
+ 
+ EV.prototype = Object.create(Carr.prototype)
+ 
+ EV.prototype.chargeBattery = function(chargeTo){
+   this.charge = chargeTo
+
+ }
+ 
+ EV.prototype.accelerate = function () {
+   this.speed += 20
+   this.charge--
+  console.log(`${this.make} going at ${this.speed} km/hr with a charge of ${this.charge}%`)
+}
+
+const tesla = new EV ("Tesla",120,22)
+// console.log (tesla)
+tesla.accelerate()
+tesla.accelerate()
+tesla.chargeBattery(22)
+console.log(tesla)
