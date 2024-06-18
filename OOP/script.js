@@ -183,3 +183,30 @@ console.log(ford);
 
 mercedes.accelerate();
 mercedes.brake();
+
+
+// Inheritance between classes: constructor function
+const Personn = function (firstName, birthYear) {
+  this.firstName = firstName;
+  this.birthYear = birthYear;
+};
+
+Personn.prototype.calcAge = function () {
+  console.log(2037 - this.birthYear)
+}
+// Child Constructor
+const Student = function (firstName, birthYear, course) {
+  Personn.call(this, firstName, birthYear);
+  this.course = course
+}
+
+Student.prototype = Object.create(Personn.prototype)
+
+Student.prototype.introduce = function () {
+  console.log(`My name is ${this.firstName} and i study ${this.course}`)
+}
+
+const mike = new Student ("Mike", 2002, 'Computer Sciencce')
+console.log(mike)
+mike.introduce()
+mike.calcAge()
