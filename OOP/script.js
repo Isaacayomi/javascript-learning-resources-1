@@ -84,23 +84,23 @@ console.log(arr.unique());
 
 // ES6 CLASSES
 // creating a constructor function using CLASSES
-class PersonCl {
-  constructor(firstName, birthYear) {
-    this.firstName = firstName;
-    this.birthYear = birthYear;
-  }
-  calcAge() {
-    console.log(2037 - this.birthYear);
-  }
+// class PersonCl {
+//   constructor(firstName, birthYear) {
+//     this.firstName = firstName;
+//     this.birthYear = birthYear;
+//   }
+//   calcAge() {
+//     console.log(2037 - this.birthYear);
+//   }
 
-  greet() {
-    console.log(`hey ${this.firstName}`);
-  }
-}
-const jessica = new PersonCl("Jessica", 1990);
-console.log(jessica);
-jessica.calcAge();
-jessica.greet();
+//   greet() {
+//     console.log(`hey ${this.firstName}`);
+//   }
+// }
+// const jessica = new PersonCl("Jessica", 1990);
+// console.log(jessica);
+// jessica.calcAge();
+// jessica.greet();
 
 // Setters and Getters
 // Using the getter property to get the last value in an Array
@@ -146,43 +146,43 @@ const sarah = Object.create(PersonProto);
 sarah.init("sarah", 1990);
 
 //Coding challenge 2
-class Car {
-  constructor(make, speed) {
-    this.make = make;
-    this.speed = speed;
-  }
-  accelerate() {
-    this.speed += 10;
-    console.log(`${this.make} is going at ${this.speed} km/hr`);
-  }
-  brake() {
-    this.speed -= 5;
-    console.log(`${this.make} is going at ${this.speed} km/hr`);
-  }
+// class Car {
+//   constructor(make, speed) {
+//     this.make = make;
+//     this.speed = speed;
+//   }
+//   accelerate() {
+//     this.speed += 10;
+//     console.log(`${this.make} is going at ${this.speed} km/hr`);
+//   }
+//   brake() {
+//     this.speed -= 5;
+//     console.log(`${this.make} is going at ${this.speed} km/hr`);
+//   }
 
-  get speedUs() {
-    return `${this.make} is going at ${(this.speed /= 1.6)} mi/hr`;
-  }
+//   get speedUs() {
+//     return `${this.make} is going at ${(this.speed /= 1.6)} mi/hr`;
+//   }
 
-  set speedUs(speed) {
-    this.speed = speed * 1.6;
-  }
-}
+//   set speedUs(speed) {
+//     this.speed = speed * 1.6;
+//   }
+// }
 
-const BMW = new Car("BMW", 120);
-const mercedes = new Car("Mercedes", 95);
-console.log(BMW, mercedes);
-BMW.accelerate();
-BMW.brake();
+// const BMW = new Car("BMW", 120);
+// const mercedes = new Car("Mercedes", 95);
+// console.log(BMW, mercedes);
+// BMW.accelerate();
+// BMW.brake();
 
-const ford = new Car("Ford", 120);
-console.log(ford.speedUs);
+// const ford = new Car("Ford", 120);
+// console.log(ford.speedUs);
 
-ford.speedUs = 75;
-console.log(ford);
+// ford.speedUs = 75;
+// console.log(ford);
 
-mercedes.accelerate();
-mercedes.brake();
+// mercedes.accelerate();
+// mercedes.brake();
 
 
 // Inheritance between classes: constructor function
@@ -243,3 +243,34 @@ tesla.accelerate()
 tesla.accelerate()
 tesla.chargeBattery(22)
 console.log(tesla)
+
+// Inheritance between classes: ES6 classes
+class PersonCll {
+  constructor(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  }
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  }
+
+  greet() {
+    console.log(`hey ${this.firstName}`);
+  }
+}
+
+class Studentcl extends PersonCll {
+  constructor(firstName, birthYear, course) {
+    super(firstName, birthYear) //parent constructor arguments
+    this.course = course
+  }
+  
+  introduce() {
+    console.log(`My name is ${this.firstName} and i study ${this.course}`)
+  }
+}
+
+const alex = new Studentcl("Alex", 2012, "Computer Science")
+console.log(alex)
+alex.introduce()
+alex.calcAge()
