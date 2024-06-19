@@ -223,11 +223,12 @@ this.speed = speed
    this.charge = `${charge}`
  }
  
+// Link the prototypes
  EV.prototype = Object.create(Carr.prototype)
  
  EV.prototype.chargeBattery = function(chargeTo){
    this.charge = chargeTo
-
+console.log(this.charge)
  }
  
  EV.prototype.accelerate = function () {
@@ -236,7 +237,7 @@ this.speed = speed
   console.log(`${this.make} going at ${this.speed} km/hr with a charge of ${this.charge}%`)
 }
 
-const tesla = new EV ("Tesla",120,22)
+const tesla = new EV ("Tesla",120,90)
 // console.log (tesla)
 tesla.accelerate()
 tesla.accelerate()
