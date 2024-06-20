@@ -292,6 +292,8 @@ Studentproto.init = function (firstName, birthYear, course) {
   Personproto.init.call(this, firstName, birthYear)
   this.course = course
 }
+
+// Testing testing
 const jay = Object.create(Studentproto)
 jay.init('Joseph', 2010, 'Computer Science')
 console.log(jay)
