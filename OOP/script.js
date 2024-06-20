@@ -274,3 +274,25 @@ const alex = new Studentcl("Alex", 2012, "Computer Science")
 console.log(alex)
 alex.introduce()
 alex.calcAge()
+
+// Inheritance between classes: Object.create
+const Personproto = {
+  calcAge() {
+    console.log(2037 - this.birthYear)
+  },
+  
+  init(firstName,  birthYear) {
+    this.firstName = firstName
+    this.birthYear = birthYear
+  }
+}
+
+const Studentproto = Object.create(Personproto)
+Studentproto.init = function (firstName, birthYear, course) {
+  Personproto.init.call(this, firstName, birthYear)
+  this.course = course
+}
+const jay = Object.create(Studentproto)
+jay.init('Joseph', 2010, 'Computer Science')
+console.log(jay)
+jay.calcAge()
