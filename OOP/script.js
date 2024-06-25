@@ -213,17 +213,18 @@ mike.introduce()
 mike.calcAge()
 
 // Coding challenge 3
-const Carr = function (make, speed) {
-   this.make = make
-this.speed = speed
- }
+// const Carr = function (make, speed) {
+//   this.make = make
+// this.speed = speed
+// }
  
- const EV = function (make, speed, charge) {
-   Carr.call(this, make, speed);
-   this.charge = `${charge}`
- }
+// const EV = function (make, speed, charge) {
+//   Carr.call(this, make, speed);
+//   this.charge = `${charge}`
+// }
  
 // Link the prototypes
+/*
  EV.prototype = Object.create(Carr.prototype)
  
  EV.prototype.chargeBattery = function(chargeTo){
@@ -236,13 +237,14 @@ console.log(this.charge)
    this.charge--
   console.log(`${this.make} going at ${this.speed} km/hr with a charge of ${this.charge}%`)
 }
+*/
 
-const tesla = new EV ("Tesla",120,90)
+// const tesla = new EV ("Tesla",120,90)
 // console.log (tesla)
-tesla.accelerate()
-tesla.accelerate()
-tesla.chargeBattery(22)
-console.log(tesla)
+// tesla.accelerate()
+// tesla.accelerate()
+// tesla.chargeBattery(22)
+// console.log(tesla)
 
 // Inheritance between classes: ES6 classes
 class PersonCll {
@@ -384,4 +386,34 @@ Account.helper();
 // Chaining
 acc1.deposit(300).deposit(500).withdraw(35).requestLoan(25000).withdraw(4000);
 console.log(acc1.getMovements());
+// Final coding challenge
+class CarrCl {
+  constructor (make, speed) {
+    this.make = make
+this.speed = speed
+  }
+  
+  
+}
 
+class EVCL extends CarrCl {
+  #charge;
+  constructor(make, speed, charge) {
+    super(make, speed)
+    this.#charge = charge
+  }
+  
+  accelerate() {
+    this.speed += 20
+   this.#charge--
+  console.log(`${this.make} going at ${this.speed} km/hr with a charge of ${this.#charge}%`)
+  }
+  
+  chargeBattery(chargeTo) {
+    this.#charge = chargeTo
+console.log(this.charge)
+  }
+}
+   const rivian = new EVCL('Rivian', 120, 23)
+rivian.accelerate()
+console.log(rivian)
